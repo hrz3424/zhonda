@@ -11,7 +11,7 @@ class Company extends Model
 
 
 
-
+    protected $modelValidate = true;
 
     // 表名
     protected $name = 'company';
@@ -31,8 +31,17 @@ class Company extends Model
 
     protected static function init()
     {
-        self::afterWrite(function($row) {
+        self::afterInsert(function($row) {
             $values['company_id'] = $row['id'];
+            $user = new User();
+            $user->where('company_id',$row['id'])->find();
+            if($user){
+                return false;
+            }
+            $validate = new \app\admin\validate\User();
+            if(!$validate->check($row['email'])){
+               return $validate->getError();
+            }
             $values['email'] = $row['email'];
             $salt = \fast\Random::alnum();
             $values['password'] = \app\common\library\Auth::instance()->getEncryptPassword($row['password'], $salt);
@@ -40,14 +49,6 @@ class Company extends Model
             db('user')->insert($values,true);
         });
     }
-
-
-
-
-
-
-
-
 
 
     public function user()
