@@ -101,4 +101,9 @@ class User extends Model
         return $this->belongsTo('UserGroup', 'group_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 
+    public  function company()
+    {
+        return $this->belongsTo('Company','company_id','id',[], 'LEFT')->setEagerlyType(0);
+    }
+
 }
