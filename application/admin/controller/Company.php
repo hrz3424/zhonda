@@ -11,7 +11,8 @@ use app\common\controller\Backend;
  */
 class Company extends Backend
 {
-    
+    protected $modelValidate = true;
+
     /**
      * Company模型对象
      * @var \app\admin\model\Company
@@ -24,13 +25,13 @@ class Company extends Backend
         $this->model = new \app\admin\model\Company;
 
     }
-    
+
     /**
      * 默认生成的控制器所继承的父类中有index/add/edit/del/multi五个基础方法、destroy/restore/recyclebin三个回收站方法
      * 因此在当前控制器中可不用编写增删改查的代码,除非需要自己控制这部分逻辑
      * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
      */
-    
+
 
     /**
      * 查看
@@ -63,8 +64,8 @@ class Company extends Backend
                     ->select();
 
             foreach ($list as $row) {
-                
-                
+
+
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);

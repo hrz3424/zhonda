@@ -3,14 +3,14 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-name" class="form-control" name="row[name]" type="text">
+            <input id="c-name" class="form-control" name="row[name]" type="text" data-rule='required'>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Logo')}:</label>
         <div class="col-xs-12 col-sm-8">
             <div class="input-group">
-                <input id="c-logo" class="form-control" size="50" name="row[logo]" type="text">
+                <input id="c-logo" class="form-control" size="50" name="row[logo]"  data-rule='required' type="text">
                 <div class="input-group-addon no-border no-padding">
                     <span><button type="button" id="plupload-logo" class="btn btn-danger plupload" data-input-id="c-logo" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-logo"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
                     <span><button type="button" id="fachoose-logo" class="btn btn-primary fachoose" data-input-id="c-logo" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
@@ -23,20 +23,20 @@
       <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('district')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input class="form-control" name="row[district]" data-responsive="true" data-toggle="city-picker" type="text">
+            <input class="form-control" name="row[district]" data-responsive="true" data-rule='required' data-toggle="city-picker" type="text">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Address')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-address" class="form-control" name="row[address]" type="text">
+            <input id="c-address" class="form-control" name="row[address]" data-rule='required' type="text">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('License')}:</label>
         <div class="col-xs-12 col-sm-8">
             <div class="input-group">
-                <input id="c-license" class="form-control" size="50" name="row[license]" type="text">
+                <input id="c-license" class="form-control" size="50" name="row[license]"  data-rule='required' type="text">
                 <div class="input-group-addon no-border no-padding">
                     <span><button type="button" id="plupload-license" class="btn btn-danger plupload" data-input-id="c-license" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-license"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
                     <span><button type="button" id="fachoose-license" class="btn btn-primary fachoose" data-input-id="c-license" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
@@ -49,25 +49,25 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Contact')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-contact" class="form-control" name="row[contact]" type="text">
+            <input id="c-contact" class="form-control" name="row[contact]" data-rule='required' type="text">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Phone')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-phone" class="form-control" name="row[phone]" type="text">
+            <input id="c-phone" class="form-control" name="row[phone]" data-rule='required;mobile' type="text">
         </div>
     </div>
      <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('User.Email')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-phone" class="form-control" name="row[email]" type="text">
+            <input id="c-email" class="form-control" name="row[email]" data-rule='required;email' type="text">
         </div>
     </div>
      <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('User.Password')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-phone" class="form-control" name="row[password]" type="text">
+            <input id="c-password" class="form-control" name="row[password]" data-rule='required;password' type="text">
         </div>
     </div>
     <div class="form-group layer-footer">

@@ -10,9 +10,6 @@ class Company extends Model
 {
 
 
-
-    protected $modelValidate = true;
-
     // 表名
     protected $name = 'company';
 
