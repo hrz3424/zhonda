@@ -1,20 +1,20 @@
 <?php
 
-namespace app\admin\model;
+namespace app\admin\model\question;
 
 use think\Model;
 
 
-class Video extends Model
+class QuestionDetail extends Model
 {
 
-    
 
-    
+
+
 
     // 表名
-    protected $name = 'video';
-    
+    protected $name = 'question_detail';
+
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = false;
 
@@ -27,9 +27,6 @@ class Video extends Model
     protected $append = [
 
     ];
-    
-
-    
 
 
 
@@ -37,4 +34,11 @@ class Video extends Model
 
 
 
+
+
+
+    public function question()
+    {
+        return $this->belongsTo('app\admin\model\question\Question', 'question_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 }

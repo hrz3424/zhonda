@@ -1,0 +1,74 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">类目:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-question_id" data-rule="required" data-source="question/question/index" class="form-control selectpage" name="row[question_id]" type="text" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Typedata')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                <?php
+                 $typedataList = ["0"=>"单选题","1"=>"多选题"];
+                ?>
+            {foreach name="typedataList" item="vo"}
+            <label for="row[typedata]-{$key}"><input id="row[typedata]-{$key}" name="row[typedata]" type="radio" value="{$key}" {in name="key" value="0"}checked{/in} /> {$vo}</label>
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" class="form-control" name="row[title]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Optiona')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-optiona" class="form-control" name="row[optiona]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Optionb')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-optionb" class="form-control" name="row[optionb]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Optionc')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-optionc" class="form-control" name="row[optionc]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Optiond')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-optiond" class="form-control" name="row[optiond]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Answerdata')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="checkbox">
+                <?php
+                 $answerdataList = ["A"=>"A","B"=>"B","C"=>"C","D"=>"D"];
+                ?>
+                {foreach name="answerdataList" item="vo"}
+                <label for="row[answerdata][]-{$key}"><input id="row[answerdata][]-{$key}" name="row[answerdata][]" type="checkbox" value="{$key}" {in name="key" value=""}checked{/in} /> {$vo}</label>
+                {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
