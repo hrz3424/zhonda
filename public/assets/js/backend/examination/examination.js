@@ -36,19 +36,75 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         },
         add: function () {
             Controller.api.bindevent();
-            /*require(['selectpage'], function () {
-                $('#selectQuestionType').selectPage({
-                    data: '/admin/question/question/index',
-                    eAjaxSuccess: function (data) {
-                        if(data) {
-                            return {"list":data.list,totalRow:data.total};
-                        }
-                    },
-                    eSelect: function (data) {
-                        console.log(data.id);
-                    }
-                });
-            });*/
+            var selected = $("div[data-id='sign_0']")
+            var $question = $("#question-list");
+            $(document).on("click", ".input-check", function(){
+                var _this = $(this);
+                var $questionids = $('#questionids');
+                var $id = _this.val();
+               if(_this.is(':checked')){
+                   var data = $questionids.val();
+                   if(data) {
+                       data = data + ','+ $id;
+                   }else {
+                       data = $id;
+                   }
+                   $questionids.val(data);
+               }
+               else {
+                   var data = $questionids.val();
+                   if(data) {
+                       var $newdata = data.split(',');
+                       $newdata.splice($.inArray($id,$newdata),1);
+                       $questionids.val($newdata);
+                   }
+               }
+               //return false;
+           });
+           $(function () {
+                $('div[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    var $qid = $(this).attr("data-id")
+                    $(selected).css("background", "none")
+                    $(this).css("background", "#C6C2C2")
+                    selected = this
+                    console.log($qid);
+                    Fast.api.ajax({
+                        url:'/admin/examination/examination/getQuestions',
+                        data:{question_id: $qid},
+                        type: 'post'
+                    }, function(data, ret){
+                        //成功的回调
+                        //console.log(data);
+                        if(!$.isArray(data)){
+                            return false;
+                        }else{
+                            $question.html('');
+                            var $questionids = $('#questionids');
+                            var $data = $questionids.val();
+                            var $newdata = $data.split(',');
+                            console.log($newdata);
+                            data.filter(function (item) {
+                                console.log(item);
+                                if($.inArray(''+item.id,$newdata) >= 0){
+                                    var $qstring = ' <div><input  class="input-check" type="checkbox"  checked="checked" name="item" value='+item.id+'><span>'+item.title+'</span></div>';
+                                }else {
+                                    var $qstring = ' <div><input  class="input-check" type="checkbox"    name="item" value='+item.id+'><span>'+item.title+'</span></div>';
+                                }
+
+                                $question.append($qstring);
+                            });
+                        };
+
+
+
+                        return false;
+                    }, function(data, ret){
+                        //失败的回调
+                        console.log(data);
+                        return false;
+                    });
+                })
+            });
         },
         edit: function () {
             Controller.api.bindevent();

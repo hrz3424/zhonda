@@ -1,21 +1,42 @@
 <form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
-
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
         <div class="col-xs-12 col-sm-8">
             <input id="c-name" class="form-control" name="row[name]" type="text">
         </div>
     </div>
-
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">选择考题:</label>
-    </div>
-    <div class="form-group">
-        <div class="col-xs-4 col-sm-offset-2">
-
-            <!--<input id="selectQuestionType"  class="form-control "  type="text" > -->
+    <input type="hidden" id="questionids"/>
+    <div class="container form-group">
+        <div class="title">选择考题：</div>
+        <div class="bar">
+            <section class="subject_bar col-xs-12 col-sm-4">
+                {foreach name="questions" item="vo"}
+                <div class="subject" data-toggle="tab" data-id="{$vo.id}">
+                    <span>{$vo.name}</span>
+                    <span>></span>
+                </div>
+                {/foreach}
+            </section>
+            <div class="subject_nav col-xs-12 col-sm-8">
+                <div>
+                    <span><input type="text">
+                        <div class="glyphicon glyphicon-search"></div>
+                    </span>
+                    <span class="sousuo">
+                        <span>类型</span> <select id="sel">
+                            <option>全部</option>
+                            <option selected>单选题</option>
+                            <option>多选题</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="subject_content">
+                    <div id="question-list" class="content">
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="tishi">共9道题目，单选题5道，多选题4道，总分90分，70分及格</div>
 
     <div class="form-group layer-footer">
         <label class="control-label col-xs-12 col-sm-2"></label>
@@ -25,3 +46,66 @@
         </div>
     </div>
 </form>
+<style>
+    .subject_bar {
+        height: 200px;
+        width: 150px;
+        overflow: auto;
+        border: 1px solid #D5D3D3;
+        padding: 5px;
+    }
+
+    .bar {}
+
+    .subject_bar,
+    .subject_nav {
+        float: left;
+        margin: 10px
+    }
+
+    .subject_nav {
+        height: 400px;
+        overflow: auto;
+        border: 1px solid #D5D3D3;
+        padding: 20px;
+    }
+
+    .subject_content {
+        margin-top: 10px;
+    }
+
+    .title {
+        margin: 10px
+    }
+
+    .container {
+        margin-left:100px;
+    }
+
+    .navigation {
+        margin: 20px 0 0 50px
+    }
+
+    .sousuo {
+        margin-left: 50px;
+    }
+
+    .tishi {
+        margin-left: 190px;
+        margin-top: 431px;
+        margin-bottom: 30px;
+    }
+
+    .glyphicon-search {
+        margin-left: 5px;
+    }
+
+    .name_input {
+        margin-left: 10px;
+        width: 400px;
+    }
+
+    #sel {
+        width: 80px;
+    }
+</style>
