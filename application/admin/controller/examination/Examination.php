@@ -3,6 +3,7 @@
 namespace app\admin\controller\examination;
 
 use app\common\controller\Backend;
+use function PHPSTORM_META\map;
 use think\Db;
 use app\admin\model\question\Question;
 use app\admin\model\question\QuestionDetail;
@@ -38,14 +39,6 @@ class Examination extends Backend
      */
     public function getQuestions()
     {
-        /*if ($this->request->isAjax()) {
-            $qid = $this->request->param('question_id');
-            $list = QuestionDetail::Where('question_id',$qid)->select();
-            //success($msg = '', $url = null, $data = '', $wait = 3, array $header = [])
-            $this->success('','',$list);
-
-
-        }*/
         $question_id = $this->request->param('question_id');
         $this->model = new \app\admin\model\question\QuestionDetail;
         //当前是否为关联查询
@@ -109,6 +102,12 @@ class Examination extends Backend
                         $this->model->validateFailException(true)->validate($validate);
                     }
                     $result = $this->model->allowField(true)->save($params);
+                    $id = $this->model->getLastInsID();
+                    $questionids = explode(",",   $params['questionids']);
+                    foreach($questionids as $item){
+                        //var_dump($item);
+                        Db::table('fa_question_examination')->insert(['examination_id' => $id,'questiondetail_id' => $item]);
+                    }
                     Db::commit();
                 } catch (ValidateException $e) {
                     Db::rollback();
@@ -132,6 +131,65 @@ class Examination extends Backend
         $this->assign('questions', $questions);
         return $this->view->fetch();
     }
+
+    /**
+     * 编辑
+     */
+    public function edit($ids = null)
+    {
+        $row = $this->model->get($ids);
+        //var_dump($row->id);
+        $data= Db::table('fa_question_examination')->where('examination_id',$row->id)->column('questiondetail_id');
+        //var_dump($data);
+        $row['questionids']  = implode(',',$data);
+        $questions = Question::all();
+        $this->assign('questions', $questions);
+        if (!$row) {
+            $this->error(__('No Results were found'));
+        }
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            if (!in_array($row[$this->dataLimitField], $adminIds)) {
+                $this->error(__('You have no permission'));
+            }
+        }
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                $params = $this->preExcludeFields($params);
+                $result = false;
+                Db::startTrans();
+                try {
+                    //是否采用模型验证
+                    if ($this->modelValidate) {
+                        $name = str_replace("\\model\\", "\\validate\\", get_class($this->model));
+                        $validate = is_bool($this->modelValidate) ? ($this->modelSceneValidate ? $name . '.edit' : $name) : $this->modelValidate;
+                        $row->validateFailException(true)->validate($validate);
+                    }
+                    $result = $row->allowField(true)->save($params);
+                    Db::commit();
+                } catch (ValidateException $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                } catch (PDOException $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                } catch (Exception $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                }
+                if ($result !== false) {
+                    $this->success();
+                } else {
+                    $this->error(__('No rows were updated'));
+                }
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
 
 
 }
