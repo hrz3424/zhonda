@@ -26,7 +26,17 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('ID')},
                         {field: 'name', title: __('Name')},
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
+                        {field: 'operate', title: __('Operate'), table: table,
+                            events: Table.api.events.operate,
+                            buttons: [{
+                                name: 'detail',
+                                text: __('Detail'),
+                                icon: 'fa fa-list',
+                                classname: 'btn btn-info btn-xs btn-detail btn-dialog',
+                                url: 'examination/examination/detail'
+                            }],
+                            formatter: Table.api.formatter.operate
+                        }
                     ]
                 ]
             });

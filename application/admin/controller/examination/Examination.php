@@ -167,6 +167,14 @@ class Examination extends Backend
                         $row->validateFailException(true)->validate($validate);
                     }
                     $result = $row->allowField(true)->save($params);
+                    //$id = $this->model->getLastInsID();
+                    //dump($ids);
+                    Db::table('fa_question_examination')->where('examination_id',$ids)->delete();
+                    $questionids = explode(",",   $params['questionids']);
+                    foreach($questionids as $item){
+                        //dump($item);
+                        Db::table('fa_question_examination')->insert(['examination_id' => $ids,'questiondetail_id' => $item]);
+                    }
                     Db::commit();
                 } catch (ValidateException $e) {
                     Db::rollback();
@@ -187,6 +195,36 @@ class Examination extends Backend
             $this->error(__('Parameter %s can not be empty', ''));
         }
         $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
+    /**
+     * 详情
+     */
+    public function detail($ids)
+    {
+        $row = $this->model->get(['id' => $ids]);
+        $single=Db::name('question_detail')
+            ->field('qd.*')
+            ->alias('qd')
+            ->join('question_examination qe','qe.questiondetail_id = qd.id')
+            ->where('qe.examination_id',$row->id)
+            ->where('qd.typedata','0')
+            ->select();
+        //dump($single);
+        $multi=Db::name('question_detail')
+            ->field('qd.*')
+            ->alias('qd')
+            ->join('question_examination qe','qe.questiondetail_id = qd.id')
+            ->where('qe.examination_id',$row->id)
+            ->where('qd.typedata','1')
+            ->select();
+        //dump($multi);
+        if (!$row)
+            $this->error(__('No Results were found'));
+        $this->view->assign("row", $row->toArray());
+        $this->view->assign("single", $single);
+        $this->view->assign("multi", $multi);
         return $this->view->fetch();
     }
 

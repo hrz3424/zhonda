@@ -8,13 +8,13 @@ use think\Model;
 class Examination extends Model
 {
 
-    
 
-    
+
+
 
     // 表名
     protected $name = 'examination';
-    
+
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = false;
 
@@ -27,9 +27,11 @@ class Examination extends Model
     protected $append = [
 
     ];
-    
 
-    
+
+
+
+
 
 
 
