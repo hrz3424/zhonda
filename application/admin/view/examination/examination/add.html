@@ -5,7 +5,13 @@
             <input id="c-name" class="form-control" name="row[name]" type="text">
         </div>
     </div>
-    <input type="hidden" id="questionids"/>
+    <input type="hidden" id="questionids" name="row[questionids]"/>
+    <input type="hidden" id="qid" />
+<!--
+    <table id="qtable" class="table table-striped table-bordered table-hover "
+           width="100%">
+    </table>
+    -->
     <div class="container form-group">
         <div class="title">选择考题：</div>
         <div class="bar">
@@ -17,9 +23,16 @@
                 </div>
                 {/foreach}
             </section>
-            <div class="subject_nav col-xs-12 col-sm-8">
+            <div class="tishi">共9道题目，单选题5道，多选题4道，总分90分，70分及格</div>
+            <div>
+                <table id="qtable" class="table table-striped table-bordered table-hover "
+                       width="100%">
+                </table>
+            </div>
+
+            <!--<div class="subject_nav col-xs-12 col-sm-8">
                 <div>
-                    <span><input type="text">
+                    <span><input type="search" >
                         <div class="glyphicon glyphicon-search"></div>
                     </span>
                     <span class="sousuo">
@@ -33,10 +46,10 @@
                 <div class="subject_content">
                     <div id="question-list" class="content">
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
-        <div class="tishi">共9道题目，单选题5道，多选题4道，总分90分，70分及格</div>
+
 
     <div class="form-group layer-footer">
         <label class="control-label col-xs-12 col-sm-2"></label>
@@ -91,9 +104,6 @@
     }
 
     .tishi {
-        margin-left: 190px;
-        margin-top: 431px;
-        margin-bottom: 30px;
     }
 
     .glyphicon-search {

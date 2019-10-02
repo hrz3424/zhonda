@@ -36,73 +36,94 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         },
         add: function () {
             Controller.api.bindevent();
+            // 初始化表格参数配置
+            Table.api.init({
+                extend: {
+                    index_url: '/admin/examination/examination/getQuestions',
+                    table: 'question',
+                }
+            });
+
+            var table = $("#qtable");
+
+            // 初始化表格
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'question.id',
+                showExport: false,
+                showToggle: false,
+                search:false,
+                queryParams: function(params){
+                    params['question_id'] = $("#qid").val() ;
+                    return params;
+                },
+                columns: [
+                    [
+                        {checkbox: true,formatter: function (value,row, index) {
+                            //console.log(row);
+                                var $questionids = $('#questionids');
+                                var $data = $questionids.val();
+                                var $newdata = $data.split(',');
+                                if($.inArray(''+row.id,$newdata) >= 0){
+                                    return {
+                                        checked: true
+                                    };
+                                }
+                                else{
+                                    return {
+                                        checked: false
+                                    };
+                                }
+
+                            }},
+                        {field: 'id', title: __('ID'),operate: false},
+                        {field: 'typedata', title: '题型', searchList: {"0":__('单选题'),"1":__('多选题')}, formatter: Table.api.formatter.normal},
+                        {field: 'title', title: __('Title'),operate:'LIKE'},
+                    ]
+                ],
+                onCheck: function (value,row, index) {
+                    var $questionids = $('#questionids');
+                    var $data = $questionids.val();
+                    var $id = value.id;
+                    if($data) {
+                        $data = $data + ','+ $id;
+                    }else {
+                        $data = $id;
+                    }
+                    $questionids.val($data);
+
+                },
+                onUncheck: function (value,row, index) {
+                    var $id = value.id;
+                    var $questionids = $('#questionids');
+                    var data = $questionids.val();
+                    if(data) {
+                        var $newdata = data.split(',');
+                        $newdata.splice($.inArray($id,$newdata),1);
+                        $questionids.val($newdata);
+                    }
+
+                },
+            });
+
+            // 为表格绑定事件
+            Table.api.bindevent(table);
+
+
+
+
             var selected = $("div[data-id='sign_0']")
-            var $question = $("#question-list");
-            $(document).on("click", ".input-check", function(){
-                var _this = $(this);
-                var $questionids = $('#questionids');
-                var $id = _this.val();
-               if(_this.is(':checked')){
-                   var data = $questionids.val();
-                   if(data) {
-                       data = data + ','+ $id;
-                   }else {
-                       data = $id;
-                   }
-                   $questionids.val(data);
-               }
-               else {
-                   var data = $questionids.val();
-                   if(data) {
-                       var $newdata = data.split(',');
-                       $newdata.splice($.inArray($id,$newdata),1);
-                       $questionids.val($newdata);
-                   }
-               }
-               //return false;
-           });
            $(function () {
                 $('div[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                     var $qid = $(this).attr("data-id")
+                    $('#qid').val($qid);
                     $(selected).css("background", "none")
                     $(this).css("background", "#C6C2C2")
                     selected = this
                     console.log($qid);
-                    Fast.api.ajax({
-                        url:'/admin/examination/examination/getQuestions',
-                        data:{question_id: $qid},
-                        type: 'post'
-                    }, function(data, ret){
-                        //成功的回调
-                        //console.log(data);
-                        if(!$.isArray(data)){
-                            return false;
-                        }else{
-                            $question.html('');
-                            var $questionids = $('#questionids');
-                            var $data = $questionids.val();
-                            var $newdata = $data.split(',');
-                            console.log($newdata);
-                            data.filter(function (item) {
-                                console.log(item);
-                                if($.inArray(''+item.id,$newdata) >= 0){
-                                    var $qstring = ' <div><input  class="input-check" type="checkbox"  checked="checked" name="item" value='+item.id+'><span>'+item.title+'</span></div>';
-                                }else {
-                                    var $qstring = ' <div><input  class="input-check" type="checkbox"    name="item" value='+item.id+'><span>'+item.title+'</span></div>';
-                                }
-
-                                $question.append($qstring);
-                            });
-                        };
-
-
-
-                        return false;
-                    }, function(data, ret){
-                        //失败的回调
-                        console.log(data);
-                        return false;
-                    });
+                    $("#qid").val($qid);
+                    table.bootstrapTable('refresh', {});
                 })
             });
         },

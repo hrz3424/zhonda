@@ -38,13 +38,51 @@ class Examination extends Backend
      */
     public function getQuestions()
     {
-        if ($this->request->isAjax()) {
+        /*if ($this->request->isAjax()) {
             $qid = $this->request->param('question_id');
             $list = QuestionDetail::Where('question_id',$qid)->select();
             //success($msg = '', $url = null, $data = '', $wait = 3, array $header = [])
             $this->success('','',$list);
 
 
+        }*/
+        $question_id = $this->request->param('question_id');
+        $this->model = new \app\admin\model\question\QuestionDetail;
+        //当前是否为关联查询
+        $this->relationSearch = true;
+        //设置过滤方法
+        $this->request->filter(['strip_tags']);
+        if ($this->request->isAjax())
+        {
+            //如果发送的来源是Selectpage，则转发到Selectpage
+            if ($this->request->request('keyField'))
+            {
+                return $this->selectpage();
+            }
+            list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            $total = $this->model
+                ->with(['question'])
+                ->where($where)
+                ->Where('question_id',$question_id)
+                ->order($sort, $order)
+                ->count();
+
+            $list = $this->model
+                ->with(['question'])
+                ->where($where)
+                ->Where('question_id',$question_id)
+                ->order($sort, $order)
+                ->limit($offset, $limit)
+                ->select();
+
+            foreach ($list as $row) {
+
+
+            }
+            $list = collection($list)->toArray();
+            $result = array("total" => $total, "rows" => $list);
+
+            return json($result);
         }
     }
 
