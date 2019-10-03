@@ -40,6 +40,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                 icon: 'fa fa-list',
                                 classname: 'btn btn-info btn-xs btn-detail btn-dialog',
                                 url: 'article/article_detail/question'
+                            },
+                            {
+                                name: 'detail',
+                                text: __('Detail'),
+                                icon: 'fa fa-list',
+                                classname: 'btn btn-info btn-xs btn-detail btn-dialog',
+                                url: 'article/article_detail/detail'
                             }],
                             formatter: Table.api.formatter.operate
                         }

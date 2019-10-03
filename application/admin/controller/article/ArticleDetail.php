@@ -152,4 +152,34 @@ class ArticleDetail extends Backend
         $this->view->assign("row", $row);
         return $this->view->fetch();
     }
+
+    /**
+     * 详情
+     */
+    public function detail($ids)
+    {
+        $row = $this->model->get(['id' => $ids]);
+        $single=Db::name('question_detail')
+            ->field('qd.*')
+            ->alias('qd')
+            ->join('article_question aq','aq.questiondetail_id = qd.id')
+            ->where('aq.articledetail_id',$row->id)
+            ->where('qd.typedata','0')
+            ->select();
+        //dump($single);
+        $multi=Db::name('question_detail')
+            ->field('qd.*')
+            ->alias('qd')
+            ->join('article_question aq','aq.questiondetail_id = qd.id')
+            ->where('aq.articledetail_id',$row->id)
+            ->where('qd.typedata','1')
+            ->select();
+        //dump($multi);
+        if (!$row)
+            $this->error(__('No Results were found'));
+        $this->view->assign("row", $row->toArray());
+        $this->view->assign("single", $single);
+        $this->view->assign("multi", $multi);
+        return $this->view->fetch();
+    }
 }

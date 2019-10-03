@@ -1,0 +1,44 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{:__('Title')}</th>
+            <th>{:__('Content')}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {volist name="row" id="vo"  }
+            <tr>
+                <td>{:__($key)}</td>
+                <td>{$vo}</td>
+            </tr>
+        {/volist}
+    </tbody>
+</table>
+<div><span class="label label-info">单选题</span></div>
+{volist name="single" id="vo"  }
+<table class="table table-striped">
+    <tr><td style="padding-left: 50px; padding-top: 20px;">{$key+1}. {$vo.title}</td></tr>
+    <tr><td style="padding-left: 60px; padding-top: 20px;">A. {$vo.optiona}</td></tr>
+    <tr><td style="padding-left: 60px; padding-top: 20px;">B. {$vo.optionb}</td></tr>
+    <tr><td style="padding-left: 60px; padding-top: 20px;">C. {$vo.optionc}</td></tr>
+    <tr><td style="padding-left: 60px; padding-top: 20px;">D. s{$vo.optiond}</td></tr>
+</table>
+{/volist}
+
+<div style="margin-top: 100px;"><span class="label label-info">多选题</span></div>
+{volist name="multi" id="vo"  }
+<table class="table table-striped">
+    <tr><td style="padding-left: 50px; padding-top: 20px;">{$key+1}. {$vo.title}</td></tr>
+    <tr><td style="padding-left: 60px; padding-top: 20px;">A.{$vo.optiona}</td></tr>
+    <tr><td style="padding-left: 60px; padding-top: 20px;">B.{$vo.optionb}</td></tr>
+    <tr><td style="padding-left: 60px; padding-top: 20px;">C.{$vo.optionc}</td></tr>
+    <tr><td style="padding-left: 60px; padding-top: 20px;">D.{$vo.optiond}</td></tr>
+</table>
+{/volist}
+<div class="hide layer-footer">
+    <label class="control-label col-xs-12 col-sm-2"></label>
+    <div class="col-xs-12 col-sm-8">
+        <button type="reset" class="btn btn-primary btn-embossed btn-close" onclick="Layer.closeAll();">{:__('Close')}</button>
+    </div>
+</div>
+
