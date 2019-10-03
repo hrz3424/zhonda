@@ -7,11 +7,9 @@
     </div>
     <input type="hidden" id="questionids" name="row[questionids]"/>
     <input type="hidden" id="qid" />
-<!--
-    <table id="qtable" class="table table-striped table-bordered table-hover "
-           width="100%">
-    </table>
-    -->
+    <input type="hidden" id="single" />
+    <input type="hidden" id="multi" />
+
     <div class="container form-group">
         <div class="title">选择考题：</div>
         <div class="bar">
@@ -23,7 +21,13 @@
                 </div>
                 {/foreach}
             </section>
-            <div class="tishi">共9道题目，单选题5道，多选题4道，总分90分，70分及格</div>
+            <div class="tishi">
+                <span class="total-count"></span>
+                <span class="single-count"></span>
+                <span class="multi-count"></span>
+                <span class="total-score"></span>
+                <span class="pass-score"></span>
+            </div>
             <div>
                 <table id="qtable" class="table table-striped table-bordered table-hover "
                        width="100%">

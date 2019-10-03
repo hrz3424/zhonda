@@ -96,24 +96,65 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     var $questionids = $('#questionids');
                     var $data = $questionids.val();
                     var $id = value.id;
+                    var $single = $('#single');
+                    var $multi= $('#multi');
+                    var $singlecount = $('.single-count');
+                    var $multicount = $('.multi-count');
+                    var $totalcount = $('.total-count');
+                    var $totalscore = $('.total-score');
+                    var $passscore = $('.pass-score');
                     if($data) {
                         $data = $data + ','+ $id;
                     }else {
                         $data = $id;
                     }
                     $questionids.val($data);
+                    var $type = value.typedata;
+                    if($type=='0'){
+                        var tmp = $single.val()*1 + 1;
+                        $single.val(tmp);
+                        $singlecount.html('单选题'+ tmp+ '道');
+                    }else{
+                        var tmp = $multi.val()*1 + 1;
+                        $multi.val(tmp);
+                        $multicount.html('多选题'+ tmp+ '道');
+                    }
+                    var $total = $single.val()*1 + $multi.val()*1;
+                    $totalcount.html('共'+ $total +'道题目' );
+                    $totalscore.html('总分:'+$total*10);
+                    $passscore.html('及格分:'+ Math.round($total*10*0.8/10)*10);
 
                 },
                 onUncheck: function (value,row, index) {
                     var $id = value.id;
                     var $questionids = $('#questionids');
                     var data = $questionids.val();
+                    var $single = $('#single');
+                    var $multi= $('#multi');
+                    var $singlecount = $('.single-count');
+                    var $multicount = $('.multi-count');
+                    var $totalcount = $('.total-count');
+                    var $totalscore = $('.total-score');
+                    var $passscore = $('.pass-score');
                     if(data) {
                         var $newdata = data.split(',');
                         $newdata.splice($.inArray($id,$newdata),1);
                         $questionids.val($newdata);
                     }
-
+                    var $type = value.typedata;
+                    if($type=='0'){
+                        var tmp = $single.val()*1 - 1;
+                        $single.val(tmp);
+                        $singlecount.html('单选题'+ tmp+ '道');
+                    }else{
+                        var tmp = $multi.val()*1 - 1;
+                        $multi.val(tmp);
+                        $multicount.html('多选题'+ tmp+ '道');
+                    }
+                    var $total = $single.val()*1 + $multi.val()*1;
+                    $totalcount.html('共'+ $total +'道题目' );
+                    $totalscore.html('总分:'+$total*10);
+                    $passscore.html('及格分:'+ Math.round($total*10*0.8/10)*10);
                 },
             });
 
@@ -185,6 +226,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 onCheck: function (value,row, index) {
                     var $questionids = $('#questionids');
                     var $data = $questionids.val();
+                    var $single = $('#single');
+                    var $multi= $('#multi');
+                    var $singlecount = $('.single-count');
+                    var $multicount = $('.multi-count');
+                    var $totalcount = $('.total-count');
+                    var $totalscore = $('.total-score');
+                    var $passscore = $('.pass-score');
                     var $id = value.id;
                     if($data) {
                         $data = $data + ','+ $id;
@@ -192,17 +240,52 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         $data = $id;
                     }
                     $questionids.val($data);
+                    var $type = value.typedata;
+                    if($type=='0'){
+                        var tmp = $single.val()*1 + 1;
+                        $single.val(tmp);
+                        $singlecount.html('单选题'+ tmp+ '道');
+                    }else{
+                        var tmp = $multi.val()*1 + 1;
+                        $multi.val(tmp);
+                        $multicount.html('多选题'+ tmp+ '道');
+                    }
+                    var $total = $single.val()*1 + $multi.val()*1;
+                    $totalcount.html('共'+ $total +'道题目' );
+                    $totalscore.html('总分:'+$total*10);
+                    $passscore.html('及格分:'+ Math.round($total*10*0.8/10)*10);
 
                 },
                 onUncheck: function (value,row, index) {
                     var $id = value.id;
                     var $questionids = $('#questionids');
                     var data = $questionids.val();
+                    var $single = $('#single');
+                    var $multi= $('#multi');
+                    var $singlecount = $('.single-count');
+                    var $multicount = $('.multi-count');
+                    var $totalcount = $('.total-count');
+                    var $totalscore = $('.total-score');
+                    var $passscore = $('.pass-score');
                     if(data) {
                         var $newdata = data.split(',');
                         $newdata.splice($.inArray($id,$newdata),1);
                         $questionids.val($newdata);
                     }
+                    var $type = value.typedata;
+                    if($type=='0'){
+                        var tmp = $single.val()*1 - 1;
+                        $single.val(tmp);
+                        $singlecount.html('单选题'+ tmp+ '道');
+                    }else{
+                        var tmp = $multi.val()*1 - 1;
+                        $multi.val(tmp);
+                        $multicount.html('多选题'+ tmp+ '道');
+                    }
+                    var $total = $single.val()*1 + $multi.val()*1;
+                    $totalcount.html('共'+ $total +'道题目' );
+                    $totalscore.html('总分:'+$total*10);
+                    $passscore.html('及格分:'+ Math.round($total*10*0.8/10)*10);
 
                 },
             });

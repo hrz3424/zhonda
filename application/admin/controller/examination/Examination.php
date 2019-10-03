@@ -144,6 +144,18 @@ class Examination extends Backend
         $row['questionids']  = implode(',',$data);
         $questions = Question::all();
         $this->assign('questions', $questions);
+        //var_dump($data);
+        $row['single'] = 0;
+        $row['multi'] = 0;
+        $tmpdata = QuestionDetail::all($data);
+        foreach($tmpdata as $item){
+            if($item->typedata == '0'){
+                $row['single'] = $row['single'] + 1;
+            }
+            else{
+                $row['multi'] =   $row['multi'] + 1;
+            }
+        }
         if (!$row) {
             $this->error(__('No Results were found'));
         }
