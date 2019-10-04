@@ -5,7 +5,7 @@ namespace app\admin\controller\plan;
 use app\common\controller\Backend;
 use think\Db;
 use app\admin\model\Company;
-
+use app\admin\model\video\Video;
 /**
  * 平台学习计划管理
  *
@@ -34,7 +34,7 @@ class Plan extends Backend
      */
 
     /**
-     * 编辑
+     * 公司
      */
     public function company($ids = null)
     {
@@ -65,6 +65,45 @@ class Plan extends Backend
                 foreach($companyids as $item){
                     //dump($item);
                     Db::table('fa_plan_company')->insert(['plan_id' => $ids,'company_id' => $item]);
+                }
+                Db::commit();
+                $this->success();
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
+
+    /**
+     * 视频
+     */
+    public function video($ids = null)
+    {
+        $row = $this->model->get($ids);
+        $data= Db::table('fa_plan_video')->where('plan_id',$row->id)->column('videodetail_id');
+        $row['videoids']  = implode(',',$data);
+        $videos = Video::all();
+        $this->assign('videos', $videos);
+        if (!$row) {
+            $this->error(__('No Results were found'));
+        }
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            if (!in_array($row[$this->dataLimitField], $adminIds)) {
+                $this->error(__('You have no permission'));
+            }
+        }
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                $params = $this->preExcludeFields($params);
+                Db::table('fa_plan_video')->where('videodetail_id',$ids)->delete();
+                $videoids = explode(",",   $params['videoids']);
+                foreach($videoids as $item){
+                    //dump($item);
+                    Db::table('fa_plan_video')->insert(['plan_id' => $ids,'videodetail_id' => $item]);
                 }
                 Db::commit();
                 $this->success();

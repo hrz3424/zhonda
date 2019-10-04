@@ -1,0 +1,96 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" class="form-control"  disabled type="text" value="{$row.name|htmlentities}">
+        </div>
+    </div>
+    <input type="hidden" id="videoids" name="row[videoids]" value="{$row.videoids|htmlentities}"/>
+    <input type="hidden" id="vid" />
+    <div class="container form-group">
+        <div class="title">选择视频：</div>
+        <div class="bar">
+            <section class="subject_bar col-xs-12 col-sm-4">
+                {foreach name="videos" item="vo"}
+                <div class="subject" data-toggle="tab" data-id="{$vo.id}">
+                    <span>{$vo.name}</span>
+                    <span>></span>
+                </div>
+                {/foreach}
+            </section>
+            <div>
+                <table id="qtable" class="table table-striped table-bordered table-hover "
+                       width="100%">
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<style>
+    .subject_bar {
+        height: 200px;
+        width: 150px;
+        overflow: auto;
+        border: 1px solid #D5D3D3;
+        padding: 5px;
+    }
+
+    .bar {}
+
+    .subject_bar,
+    .subject_nav {
+        float: left;
+        margin: 10px
+    }
+
+    .subject_nav {
+        height: 400px;
+        overflow: auto;
+        border: 1px solid #D5D3D3;
+        padding: 20px;
+    }
+
+    .subject_content {
+        margin-top: 10px;
+    }
+
+    .title {
+        margin: 10px
+    }
+
+    .container {
+        margin-left:100px;
+    }
+
+    .navigation {
+        margin: 20px 0 0 50px
+    }
+
+    .sousuo {
+        margin-left: 50px;
+    }
+
+    .tishi {
+    }
+
+    .glyphicon-search {
+        margin-left: 5px;
+    }
+
+    .name_input {
+        margin-left: 10px;
+        width: 400px;
+    }
+
+    #sel {
+        width: 80px;
+    }
+</style>

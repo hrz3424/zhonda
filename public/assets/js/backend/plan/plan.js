@@ -155,6 +155,93 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 为表格绑定事件
             Table.api.bindevent(table);
         },
+
+        video: function () {
+            Controller.api.bindevent();
+            // 初始化表格参数配置
+            Table.api.init({
+                extend: {
+                    index_url: 'video/video_detail/getVideos',
+                    table: 'video_detail',
+                }
+            });
+
+            var table = $("#qtable");
+
+            // 初始化表格
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'id',
+                showExport: false,
+                showToggle: false,
+                search:false,
+                queryParams: function(params){
+                    params['video_id'] = $("#vid").val() ;
+                    return params;
+                },
+                columns: [
+                    [
+                        {checkbox: true,formatter: function (value,row, index) {
+                                //console.log(row);
+                                var $videoids = $('#videoids');
+                                var $data = $videoids.val();
+                                var $newdata = $data.split(',');
+                                if($.inArray(''+row.id,$newdata) >= 0){
+                                    return {
+                                        checked: true
+                                    };
+                                }
+                                else{
+                                    return {
+                                        checked: false
+                                    };
+                                }
+
+                            }},
+                        {field: 'id', title: __('ID'),operate: false},
+                        {field: 'name', title: __('Name'),operate:'LIKE'},
+                    ]
+                ],
+                onCheck: function (value,row, index) {
+                    var $videoids = $('#videoids');
+                    var $data = $videoids.val();
+                    var $id = value.id;
+                    if($data) {
+                        $data = $data + ','+ $id;
+                    }else {
+                        $data = $id;
+                    }
+                    $videoids.val($data);
+                },
+                onUncheck: function (value,row, index) {
+                    var $id = value.id;
+                    var $videoids = $('#videoids');
+                    var data = $videoids.val();
+                    if(data) {
+                        var $newdata = data.split(',');
+                        $newdata.splice($.inArray($id,$newdata),1);
+                        $videoids.val($newdata);
+                    }
+                },
+            });
+
+            // 为表格绑定事件
+            Table.api.bindevent(table);
+
+            var selected = $("div[data-id='sign_0']")
+            $(function () {
+                $('div[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    var $qid = $(this).attr("data-id")
+                    $(selected).css("background", "none")
+                    $(this).css("background", "#C6C2C2")
+                    selected = this
+                    console.log($qid);
+                    $("#vid").val($qid);
+                    table.bootstrapTable('refresh', {});
+                })
+            });
+        },
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
