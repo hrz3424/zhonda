@@ -6,6 +6,7 @@ use app\common\controller\Backend;
 use think\Db;
 use app\admin\model\Company;
 use app\admin\model\video\Video;
+use app\admin\model\article\Article;
 /**
  * 平台学习计划管理
  *
@@ -178,6 +179,46 @@ class Plan extends Backend
                 foreach($noticeids as $item){
                     //dump($item);
                     Db::table('fa_plan_notice')->insert(['plan_id' => $ids,'notice_id' => $item]);
+                }
+                Db::commit();
+                $this->success();
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
+    /**
+     * 文章
+     */
+    public function article($ids = null)
+    {
+        $row = $this->model->get($ids);
+        $data= Db::table('fa_plan_article')->where('plan_id',$row->id)->column('articledetail_id');
+        $row['articleids']  = implode(',',$data);
+        $articles = Article::all();
+        $this->assign('articles', $articles);
+        if (!$row) {
+            $this->error(__('No Results were found'));
+        }
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            if (!in_array($row[$this->dataLimitField], $adminIds)) {
+                $this->error(__('You have no permission'));
+            }
+        }
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                $params = $this->preExcludeFields($params);
+                Db::table('fa_plan_article')->where('plan_id',$ids)->delete();
+                $articleids = explode(",",   $params['articleids']);
+                foreach($articleids as $item){
+                    //dump($item);
+                    if($item != 0){
+                        Db::table('fa_plan_article')->insert(['plan_id' => $ids,'articledetail_id' => $item]);
+                    }
                 }
                 Db::commit();
                 $this->success();
