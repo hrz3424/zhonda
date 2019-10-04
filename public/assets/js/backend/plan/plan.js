@@ -83,6 +83,78 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         edit: function () {
             Controller.api.bindevent();
         },
+        company: function () {
+            Controller.api.bindevent();
+            // 初始化表格参数配置
+            Table.api.init({
+                extend: {
+                    index_url: 'company/index',
+                    table: 'company',
+                }
+            });
+
+            var table = $("#qtable");
+
+            // 初始化表格
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'id',
+                showExport: false,
+                showToggle: false,
+                search:false,
+                columns: [
+                    [
+                        {checkbox: true,formatter: function (value,row, index) {
+                                //console.log(row);
+                                var $companyids = $('#companyids');
+                                var $data = $companyids.val();
+                                var $newdata = $data.split(',');
+                                if($.inArray(''+row.id,$newdata) >= 0){
+                                    return {
+                                        checked: true
+                                    };
+                                }
+                                else{
+                                    return {
+                                        checked: false
+                                    };
+                                }
+
+                            }},
+                        {field: 'id', title: __('ID'),operate: false},
+                        {field: 'name', title: __('Name'),operate:'LIKE'},
+                    ]
+                ],
+                onCheck: function (value,row, index) {
+                    var $companyids = $('#companyids');
+                    var $data = $companyids.val();
+                    var $id = value.id;
+                    if($data) {
+                        $data = $data + ','+ $id;
+                    }else {
+                        $data = $id;
+                    }
+                    $companyids.val($data);
+                    $('.company-name').append('<div class="panel-heading" data-uid=company-'+ value.id+'>'+ value.name +'</div>')
+                },
+                onUncheck: function (value,row, index) {
+                    var $id = value.id;
+                    var $companyids = $('#companyids');
+                    var data = $companyids.val();
+                    if(data) {
+                        var $newdata = data.split(',');
+                        $newdata.splice($.inArray($id,$newdata),1);
+                        $companyids.val($newdata);
+                    }
+                    var $cid = 'company-'+ value.id;
+                    $("div[data-uid = "+ $cid +"]").remove();
+                },
+            });
+
+            // 为表格绑定事件
+            Table.api.bindevent(table);
+        },
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
