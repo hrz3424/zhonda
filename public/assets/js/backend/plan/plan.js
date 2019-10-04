@@ -242,6 +242,147 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 })
             });
         },
+
+        examination: function () {
+            Controller.api.bindevent();
+            // 初始化表格参数配置
+            Table.api.init({
+                extend: {
+                    index_url: 'examination/examination/index',
+                    table: 'examination',
+                }
+            });
+
+            var table = $("#qtable");
+
+            // 初始化表格
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'id',
+                showExport: false,
+                showToggle: false,
+                search:false,
+                columns: [
+                    [
+                        {checkbox: true,formatter: function (value,row, index) {
+                                //console.log(row);
+                                var $examinationids = $('#examinationids');
+                                var $data = $examinationids.val();
+                                var $newdata = $data.split(',');
+                                if($.inArray(''+row.id,$newdata) >= 0){
+                                    return {
+                                        checked: true
+                                    };
+                                }
+                                else{
+                                    return {
+                                        checked: false
+                                    };
+                                }
+
+                            }},
+                        {field: 'id', title: __('ID'),operate: false},
+                        {field: 'name', title: __('Name'),operate:'LIKE'},
+                    ]
+                ],
+                onCheck: function (value,row, index) {
+                    var $examinationids = $('#examinationids');
+                    var $data = $examinationids.val();
+                    var $id = value.id;
+                    if($data) {
+                        $data = $data + ','+ $id;
+                    }else {
+                        $data = $id;
+                    }
+                    $examinationids.val($data);
+                },
+                onUncheck: function (value,row, index) {
+                    var $id = value.id;
+                    var $examinationids = $('#examinationids');
+                    var data = $examinationids.val();
+                    if(data) {
+                        var $newdata = data.split(',');
+                        $newdata.splice($.inArray($id,$newdata),1);
+                        $examinationids.val($newdata);
+                    }
+                },
+            });
+
+            // 为表格绑定事件
+            Table.api.bindevent(table);
+        },
+
+        notice: function () {
+            Controller.api.bindevent();
+            // 初始化表格参数配置
+            Table.api.init({
+                extend: {
+                    index_url: 'notice/notice/index',
+                    table: 'notice',
+                }
+            });
+
+            var table = $("#qtable");
+
+            // 初始化表格
+            table.bootstrapTable({
+                url: $.fn.bootstrapTable.defaults.extend.index_url,
+                pk: 'id',
+                sortName: 'id',
+                showExport: false,
+                showToggle: false,
+                search:false,
+                columns: [
+                    [
+                        {checkbox: true,formatter: function (value,row, index) {
+                                //console.log(row);
+                                var $noticeids = $('#noticeids');
+                                var $data = $noticeids.val();
+                                var $newdata = $data.split(',');
+                                if($.inArray(''+row.id,$newdata) >= 0){
+                                    return {
+                                        checked: true
+                                    };
+                                }
+                                else{
+                                    return {
+                                        checked: false
+                                    };
+                                }
+
+                            }},
+                        {field: 'id', title: __('ID'),operate: false},
+                        {field: 'title', title: __('Title'),operate:'LIKE'},
+                    ]
+                ],
+                onCheck: function (value,row, index) {
+                    var $noticeids = $('#noticeids');
+                    var $data = $noticeids.val();
+                    var $id = value.id;
+                    if($data) {
+                        $data = $data + ','+ $id;
+                    }else {
+                        $data = $id;
+                    }
+                    $noticeids.val($data);
+                },
+                onUncheck: function (value,row, index) {
+                    var $id = value.id;
+                    var $noticeids = $('#noticeids');
+                    var data = $noticeids.val();
+                    if(data) {
+                        var $newdata = data.split(',');
+                        $newdata.splice($.inArray($id,$newdata),1);
+                        $noticeids.val($newdata);
+                    }
+                },
+            });
+
+            // 为表格绑定事件
+            Table.api.bindevent(table);
+        },
+
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));

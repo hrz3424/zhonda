@@ -99,11 +99,13 @@ class Plan extends Backend
             $params = $this->request->post("row/a");
             if ($params) {
                 $params = $this->preExcludeFields($params);
-                Db::table('fa_plan_video')->where('videodetail_id',$ids)->delete();
+                Db::table('fa_plan_video')->where('plan_id',$ids)->delete();
                 $videoids = explode(",",   $params['videoids']);
                 foreach($videoids as $item){
                     //dump($item);
-                    Db::table('fa_plan_video')->insert(['plan_id' => $ids,'videodetail_id' => $item]);
+                    if($item != 0){
+                        Db::table('fa_plan_video')->insert(['plan_id' => $ids,'videodetail_id' => $item]);
+                    }
                 }
                 Db::commit();
                 $this->success();
@@ -113,5 +115,78 @@ class Plan extends Backend
         $this->view->assign("row", $row);
         return $this->view->fetch();
     }
+
+    /**
+     * 试卷
+     */
+    public function examination($ids = null)
+    {
+        $row = $this->model->get($ids);
+        $data= Db::table('fa_plan_examination')->where('plan_id',$row->id)->column('examination_id');
+        $row['examinationids']  = implode(',',$data);
+        if (!$row) {
+            $this->error(__('No Results were found'));
+        }
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            if (!in_array($row[$this->dataLimitField], $adminIds)) {
+                $this->error(__('You have no permission'));
+            }
+        }
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                $params = $this->preExcludeFields($params);
+                Db::table('fa_plan_examination')->where('plan_id',$ids)->delete();
+                $examinationids = explode(",",   $params['examinationids']);
+                foreach($examinationids as $item){
+                    //dump($item);
+                    Db::table('fa_plan_examination')->insert(['plan_id' => $ids,'examination_id' => $item]);
+                }
+                Db::commit();
+                $this->success();
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
+    /**
+     * 公告
+     */
+    public function notice($ids = null)
+    {
+        $row = $this->model->get($ids);
+        $data= Db::table('fa_plan_notice')->where('plan_id',$row->id)->column('notice_id');
+        $row['noticeids']  = implode(',',$data);
+        if (!$row) {
+            $this->error(__('No Results were found'));
+        }
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            if (!in_array($row[$this->dataLimitField], $adminIds)) {
+                $this->error(__('You have no permission'));
+            }
+        }
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                $params = $this->preExcludeFields($params);
+                Db::table('fa_plan_notice')->where('plan_id',$ids)->delete();
+                $noticeids = explode(",",   $params['noticeids']);
+                foreach($noticeids as $item){
+                    //dump($item);
+                    Db::table('fa_plan_notice')->insert(['plan_id' => $ids,'notice_id' => $item]);
+                }
+                Db::commit();
+                $this->success();
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
 
 }
