@@ -39,6 +39,7 @@ class ArticleDetail extends Backend
      */
     public function index()
     {
+        $article_id = $this->request->param('article_id');
         //当前是否为关联查询
         $this->relationSearch = true;
         //设置过滤方法
@@ -54,12 +55,14 @@ class ArticleDetail extends Backend
             $total = $this->model
                     ->with(['article'])
                     ->where($where)
+                    ->Where('article_id',$article_id)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
                     ->with(['article'])
                     ->where($where)
+                    ->Where('article_id',$article_id)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();

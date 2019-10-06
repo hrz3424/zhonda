@@ -230,4 +230,59 @@ class Plan extends Backend
     }
 
 
+    /**
+     * 详情
+     */
+    public function detail($ids)
+    {
+        $row = $this->model->get(['id' => $ids]);
+        $companys=$this->model
+            ->field('p.*')
+            ->alias('p')
+            ->join('plan_company pc','pc.plan_id = p.id')
+            ->join('company c','c.id = pc.company_id')
+            ->column('c.name');
+        $companys = implode(",", $companys);
+        //dump($companys);
+        $videos=$this->model
+            ->field('p.*')
+            ->alias('p')
+            ->join('plan_video pv','pv.plan_id = p.id')
+            ->join('video_detail v','v.id = pv.videodetail_id')
+            ->column('v.name');
+        //dump($videos);
+        $examinations=$this->model
+            ->field('p.*')
+            ->alias('p')
+            ->join('plan_examination pe','pe.plan_id = p.id')
+            ->join('examination e','e.id = pe.examination_id')
+            ->column('e.name');
+        //dump($examinations);
+        $notices=$this->model
+            ->field('p.*')
+            ->alias('p')
+            ->join('plan_notice pn','pn.plan_id = p.id')
+            ->join('notice n','n.id = pn.notice_id')
+            ->column('n.title');
+        //dump($notices);
+        $articles=$this->model
+            ->field('p.*')
+            ->alias('p')
+            ->join('plan_article pa','pa.plan_id = p.id')
+            ->join('article_detail ad','ad.id = pa.articledetail_id')
+            ->column('ad.title');
+        //dump($articles);
+        if (!$row)
+            $this->error(__('No Results were found'));
+        $this->view->assign("row", $row->toArray());
+        $this->view->assign("companys", $companys);
+        $this->view->assign("videos", $videos);
+        $this->view->assign("examinations", $examinations);
+        $this->view->assign("notices", $notices);
+        $this->view->assign("articles", $articles);
+        return $this->view->fetch();
+    }
+
+
+
 }

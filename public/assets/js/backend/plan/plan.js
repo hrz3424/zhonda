@@ -34,31 +34,31 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                             buttons: [
                                 {
                                     name: 'company',
-                                    text: '公司1',
+                                    text: '公司',
                                     classname: 'btn btn-primary btn-xs btn-detail btn-dialog',
                                     url: 'plan/plan/company'
                                 },
                                 {
                                     name: 'video',
-                                    text: '视频2',
+                                    text: '视频',
                                     classname: 'btn btn-default btn-xs btn-detail btn-dialog',
                                     url: 'plan/plan/video'
                                 },
                                 {
                                     name: 'examination',
-                                    text: '试卷3',
+                                    text: '试卷',
                                     classname: 'btn btn-success btn-xs btn-detail btn-dialog',
                                     url: 'plan/plan/examination'
                                 },
                                 {
                                     name: 'notice',
-                                    text: '公告4',
+                                    text: '公告',
                                     classname: 'btn btn-warning btn-xs btn-detail btn-dialog',
                                     url: 'plan/plan/notice'
                                 },
                                 {
                                     name: 'article',
-                                    text: '文章5',
+                                    text: '文章',
                                     classname: 'btn btn-danger btn-xs btn-detail btn-dialog',
                                     url: 'plan/plan/article'
                                 },
@@ -66,7 +66,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                     name: 'detail',
                                     text: '查看',
                                     classname: 'btn btn-info btn-xs btn-detail btn-dialog',
-                                    url: 'notice/notice/detail'
+                                    url: 'plan/plan/detail'
                                 }],
                             formatter: Table.api.formatter.operate
                         }
@@ -464,7 +464,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     $(this).css("background", "#C6C2C2")
                     selected = this
                     console.log($qid);
-                    $("#vid").val($qid);
+                    $("#aid").val($qid);
                     table.bootstrapTable('refresh', {});
                 })
             });

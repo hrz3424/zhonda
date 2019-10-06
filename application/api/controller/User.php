@@ -227,36 +227,6 @@ class User extends Api
         $this->success();
     }
 
-    /**
-     * 第三方登录
-     *
-     * @param string $platform 平台名称
-     * @param string $code     Code码
-     */
-    public function third()
-    {
-        $url = url('user/index');
-        $platform = $this->request->request("platform");
-        $code = $this->request->request("code");
-        $config = get_addon_config('third');
-        if (!$config || !isset($config[$platform])) {
-            $this->error(__('Invalid parameters'));
-        }
-        $app = new \addons\third\library\Application($config);
-        //通过code换access_token和绑定会员
-        $result = $app->{$platform}->getUserInfo(['code' => $code]);
-        if ($result) {
-            $loginret = \addons\third\library\Service::connect($platform, $result);
-            if ($loginret) {
-                $data = [
-                    'userinfo'  => $this->auth->getUserinfo(),
-                    'thirdinfo' => $result
-                ];
-                $this->success(__('Logged in successful'), $data);
-            }
-        }
-        $this->error(__('Operation failed'), $url);
-    }
 
     /**
      * 重置密码
