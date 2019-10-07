@@ -43,7 +43,6 @@ class Company extends Model
             $salt = \fast\Random::alnum();
             $values['password'] = \app\common\library\Auth::instance()->getEncryptPassword($row['password'], $salt);
             $values['salt'] =  $salt;
-            $values['cid'] = 'c'.\fast\Random::uuid();
             db('user')->insert($values,true);
         });
     }
@@ -52,5 +51,13 @@ class Company extends Model
     public function user()
     {
         return $this->hasOne('User', '', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+    /**
+     * 获取针对公司的消息
+     */
+    public function messages()
+    {
+        return $this->morphMany('Message', 'msgtable');
     }
 }

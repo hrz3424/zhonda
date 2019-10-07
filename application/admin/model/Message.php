@@ -4,17 +4,21 @@ namespace app\admin\model;
 
 use think\Model;
 
+use app\admin\model\Driver;
+
+use app\admin\model\Company;
+
 
 class Message extends Model
 {
 
-    
 
-    
+
+
 
     // 表名
     protected $name = 'message';
-    
+
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = 'int';
 
@@ -27,9 +31,9 @@ class Message extends Model
     protected $append = [
         'objectdata_text'
     ];
-    
 
-    
+
+
     public function getObjectdataList()
     {
         return ['0' => __('Objectdata 0'), '1' => __('Objectdata 1')];
@@ -42,6 +46,15 @@ class Message extends Model
         $list = $this->getObjectdataList();
         return isset($list[$value]) ? $list[$value] : '';
     }
+
+    public function msgtable()
+    {
+        return $this->morphTo('msgtable',[
+            'Company'	=>	Company::class,
+            'Driver'	=>	Driver::class,
+        ]);
+    }
+
 
 
 
