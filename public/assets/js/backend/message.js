@@ -7,7 +7,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 extend: {
                     index_url: 'message/index' + location.search,
                     add_url: 'message/add',
-                    edit_url: 'message/edit',
                     del_url: 'message/del',
                     multi_url: 'message/multi',
                     table: 'message',
@@ -26,9 +25,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('ID'),operate: false},
                         {field: 'name', title: __('Name')},
-                        {field: 'createtime', title: __('Createtime'), operate:'RANGE', addclass:'datetimerange'},
+                        {field: 'createtime', title: __('Createtime'), formatter: Table.api.formatter.datetime, operate: 'RANGE', addclass: 'datetimerange', sortable: true},
                         {field: 'content', title: __('Content'),operate: false},
                         {field: 'objectdata', title: __('Objectdata'), searchList: {"0": '公司',"1": '驾驶员'}, formatter: Table.api.formatter.normal},
+                        {field: 'operate', title: __('Operate'), table: table,
+                            events: Table.api.events.operate,
+                            formatter: Table.api.formatter.operate
+                        }
                     ]
                 ]
             });
