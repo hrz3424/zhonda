@@ -13,7 +13,7 @@ use think\Config;
  */
 class Common extends Api
 {
-    protected $noNeedLogin = ['init'];
+    protected $noNeedLogin = ['upload'];
     protected $noNeedRight = '*';
 
     /**
