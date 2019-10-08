@@ -26,7 +26,7 @@ class Auth
     //默认配置
     protected $config = [];
     protected $options = [];
-    protected $allowFields = ['id', 'username', 'nickname', 'mobile', 'avatar', 'score'];
+    protected $allowFields = ['id', 'username', 'nickname', 'mobile', 'avatar', 'score','company_id'];
 
     public function __construct($options = [])
     {
@@ -370,13 +370,13 @@ class Auth
      */
     public function getUserinfo()
     {
-        $data = $this->_user->toArray();
-        //$allowFields = $this->getAllowFields();
-        //$userinfo = array_intersect_key($data, array_flip($allowFields));
-        //$userinfo = array_merge($userinfo, Token::get($this->_token));
+        $company = [
+            'company_id' => $this->_user->company_id
+         ];
         $token = Token::get($this->_token);
         unset($token['user_id']);
-        return $token;
+        $userinfo = array_merge($token, $company);
+        return $userinfo;
     }
 
     /**

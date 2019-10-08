@@ -17,30 +17,6 @@ class Common extends Api
     protected $noNeedRight = '*';
 
     /**
-     * 加载初始化
-     *
-     * @param string $version 版本号
-     * @param string $lng     经度
-     * @param string $lat     纬度
-     */
-    public function init()
-    {
-        if ($version = $this->request->request('version')) {
-            $lng = $this->request->request('lng');
-            $lat = $this->request->request('lat');
-            $content = [
-                'citydata'    => Area::getCityFromLngLat($lng, $lat),
-                'versiondata' => Version::check($version),
-                'uploaddata'  => Config::get('upload'),
-                'coverdata'   => Config::get("cover"),
-            ];
-            $this->success('', $content);
-        } else {
-            $this->error(__('Invalid parameters'));
-        }
-    }
-
-    /**
      * 上传文件
      * @ApiMethod (POST)
      * @param File $file 文件流

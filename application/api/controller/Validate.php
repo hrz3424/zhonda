@@ -24,14 +24,12 @@ class Validate extends Api
      *
      * @param string $email   邮箱
      * @param string $captcha 验证码
-     * @param string $event   事件
      */
     public function check_ems_correct()
     {
         $email = $this->request->request('email');
         $captcha = $this->request->request('captcha');
-        $event = $this->request->request('event');
-        if (!\app\common\library\Ems::check($email, $captcha, $event)) {
+        if (!\app\common\library\Ems::check($email, $captcha)) {
             $this->error(__('验证码不正确'));
         }
         $this->success();

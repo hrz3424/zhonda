@@ -36,7 +36,8 @@ class User extends Api
                 "token": "423f0205-7805-4619-90a3-79cbdcab6800",
                 "createtime": 1570501579,
                 "expiretime": 1573093579,
-                "expires_in": 2592000
+                "expires_in": 2592000,
+                "company_id": 4
              }
            }
         })
@@ -68,84 +69,32 @@ class User extends Api
 
 
     /**
-     * 修改邮箱
-     *
-     * @param string $email   邮箱
-     * @param string $captcha 验证码
-     */
-    public function changeemail()
-    {
-        $user = $this->auth->getUser();
-        $email = $this->request->post('email');
-        $captcha = $this->request->request('captcha');
-        if (!$email || !$captcha) {
-            $this->error(__('Invalid parameters'));
-        }
-        if (!Validate::is($email, "email")) {
-            $this->error(__('Email is incorrect'));
-        }
-        if (\app\common\model\User::where('email', $email)->where('id', '<>', $user->id)->find()) {
-            $this->error(__('Email already exists'));
-        }
-        $result = Ems::check($email, $captcha, 'changeemail');
-        if (!$result) {
-            $this->error(__('Captcha is incorrect'));
-        }
-        $verification = $user->verification;
-        $verification->email = 1;
-        $user->verification = $verification;
-        $user->email = $email;
-        $user->save();
-
-        Ems::flush($email, 'changeemail');
-        $this->success();
-    }
-
-
-    /**
      * 重置密码
      *
-     * @param string $mobile      手机号
+     * @param string $email      邮箱
      * @param string $newpassword 新密码
      * @param string $captcha     验证码
      */
     public function resetpwd()
     {
-        $type = $this->request->request("type");
-        $mobile = $this->request->request("mobile");
         $email = $this->request->request("email");
         $newpassword = $this->request->request("newpassword");
         $captcha = $this->request->request("captcha");
         if (!$newpassword || !$captcha) {
             $this->error(__('Invalid parameters'));
         }
-        if ($type == 'mobile') {
-            if (!Validate::regex($mobile, "^1\d{10}$")) {
-                $this->error(__('Mobile is incorrect'));
-            }
-            $user = \app\common\model\User::getByMobile($mobile);
-            if (!$user) {
-                $this->error(__('User not found'));
-            }
-            $ret = Sms::check($mobile, $captcha, 'resetpwd');
-            if (!$ret) {
-                $this->error(__('Captcha is incorrect'));
-            }
-            Sms::flush($mobile, 'resetpwd');
-        } else {
-            if (!Validate::is($email, "email")) {
-                $this->error(__('Email is incorrect'));
-            }
-            $user = \app\common\model\User::getByEmail($email);
-            if (!$user) {
-                $this->error(__('User not found'));
-            }
-            $ret = Ems::check($email, $captcha, 'resetpwd');
-            if (!$ret) {
-                $this->error(__('Captcha is incorrect'));
-            }
-            Ems::flush($email, 'resetpwd');
+        if (!Validate::is($email, "email")) {
+            $this->error(__('Email is incorrect'));
         }
+        $user = \app\common\model\User::getByEmail($email);
+        if (!$user) {
+            $this->error(__('User not found'));
+        }
+        $ret = Ems::check($email, $captcha, 'resetpwd');
+        if (!$ret) {
+            $this->error(__('Captcha is incorrect'));
+        }
+        Ems::flush($email, 'resetpwd');
         //模拟一次登录
         $this->auth->direct($user->id);
         $ret = $this->auth->changepwd($newpassword, '', true);

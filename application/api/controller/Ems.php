@@ -33,39 +33,17 @@ class Ems extends Api
      * 发送验证码
      *
      * @param string    $email      邮箱
-     * @param string    $event      事件名称
      */
     public function send()
     {
         $email = $this->request->request("email");
-        $event = $this->request->request("event");
-        $event = $event ? $event : 'register';
 
-        $last = Emslib::get($email, $event);
+        $last = Emslib::get($email);
         if ($last && time() - $last['createtime'] < 60)
         {
             $this->error(__('发送频繁'));
         }
-        if ($event)
-        {
-            $userinfo = User::getByEmail($email);
-            if ($event == 'register' && $userinfo)
-            {
-                //已被注册
-                $this->error(__('已被注册'));
-            }
-            else if (in_array($event, ['changeemail']) && $userinfo)
-            {
-                //被占用
-                $this->error(__('已被占用'));
-            }
-            else if (in_array($event, ['changepwd', 'resetpwd']) && !$userinfo)
-            {
-                //未注册
-                $this->error(__('未注册'));
-            }
-        }
-        $ret = Emslib::send($email, NULL, $event);
+        $ret = Emslib::send($email, NULL);
         if ($ret)
         {
             $this->success(__('发送成功'));
@@ -80,36 +58,14 @@ class Ems extends Api
      * 检测验证码
      *
      * @param string    $email      邮箱
-     * @param string    $event      事件名称
      * @param string    $captcha    验证码
      */
     public function check()
     {
         $email = $this->request->request("email");
-        $event = $this->request->request("event");
-        $event = $event ? $event : 'register';
         $captcha = $this->request->request("captcha");
 
-        if ($event)
-        {
-            $userinfo = User::getByEmail($email);
-            if ($event == 'register' && $userinfo)
-            {
-                //已被注册
-                $this->error(__('已被注册'));
-            }
-            else if (in_array($event, ['changeemail']) && $userinfo)
-            {
-                //被占用
-                $this->error(__('已被占用'));
-            }
-            else if (in_array($event, ['changepwd', 'resetpwd']) && !$userinfo)
-            {
-                //未注册
-                $this->error(__('未注册'));
-            }
-        }
-        $ret = Emslib::check($email, $captcha, $event);
+        $ret = Emslib::check($email, $captcha);
         if ($ret)
         {
             $this->success(__('成功'));
