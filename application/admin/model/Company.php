@@ -43,6 +43,7 @@ class Company extends Model
             $salt = \fast\Random::alnum();
             $values['password'] = \app\common\library\Auth::instance()->getEncryptPassword($row['password'], $salt);
             $values['salt'] =  $salt;
+            $values['status'] = 'normal';
             db('user')->insert($values,true);
         });
     }

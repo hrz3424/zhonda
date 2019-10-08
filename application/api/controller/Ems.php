@@ -11,13 +11,14 @@ use app\common\model\User;
  */
 class Ems extends Api
 {
+
     protected $noNeedLogin = '*';
     protected $noNeedRight = '*';
 
     public function _initialize()
     {
         parent::_initialize();
-        \think\Hook::add('ems_send', function ($params) {
+        \think\Hook::add('ems_send', function($params) {
             $obj = \app\common\library\Email::instance();
             $result = $obj
                 ->to($params->email)
@@ -31,8 +32,8 @@ class Ems extends Api
     /**
      * 发送验证码
      *
-     * @param string $email 邮箱
-     * @param string $event 事件名称
+     * @param string    $email      邮箱
+     * @param string    $event      事件名称
      */
     public function send()
     {
@@ -41,26 +42,36 @@ class Ems extends Api
         $event = $event ? $event : 'register';
 
         $last = Emslib::get($email, $event);
-        if ($last && time() - $last['createtime'] < 60) {
+        if ($last && time() - $last['createtime'] < 60)
+        {
             $this->error(__('发送频繁'));
         }
-        if ($event) {
+        if ($event)
+        {
             $userinfo = User::getByEmail($email);
-            if ($event == 'register' && $userinfo) {
+            if ($event == 'register' && $userinfo)
+            {
                 //已被注册
                 $this->error(__('已被注册'));
-            } elseif (in_array($event, ['changeemail']) && $userinfo) {
+            }
+            else if (in_array($event, ['changeemail']) && $userinfo)
+            {
                 //被占用
                 $this->error(__('已被占用'));
-            } elseif (in_array($event, ['changepwd', 'resetpwd']) && !$userinfo) {
+            }
+            else if (in_array($event, ['changepwd', 'resetpwd']) && !$userinfo)
+            {
                 //未注册
                 $this->error(__('未注册'));
             }
         }
-        $ret = Emslib::send($email, null, $event);
-        if ($ret) {
+        $ret = Emslib::send($email, NULL, $event);
+        if ($ret)
+        {
             $this->success(__('发送成功'));
-        } else {
+        }
+        else
+        {
             $this->error(__('发送失败'));
         }
     }
@@ -68,9 +79,9 @@ class Ems extends Api
     /**
      * 检测验证码
      *
-     * @param string $email   邮箱
-     * @param string $event   事件名称
-     * @param string $captcha 验证码
+     * @param string    $email      邮箱
+     * @param string    $event      事件名称
+     * @param string    $captcha    验证码
      */
     public function check()
     {
@@ -79,24 +90,34 @@ class Ems extends Api
         $event = $event ? $event : 'register';
         $captcha = $this->request->request("captcha");
 
-        if ($event) {
+        if ($event)
+        {
             $userinfo = User::getByEmail($email);
-            if ($event == 'register' && $userinfo) {
+            if ($event == 'register' && $userinfo)
+            {
                 //已被注册
                 $this->error(__('已被注册'));
-            } elseif (in_array($event, ['changeemail']) && $userinfo) {
+            }
+            else if (in_array($event, ['changeemail']) && $userinfo)
+            {
                 //被占用
                 $this->error(__('已被占用'));
-            } elseif (in_array($event, ['changepwd', 'resetpwd']) && !$userinfo) {
+            }
+            else if (in_array($event, ['changepwd', 'resetpwd']) && !$userinfo)
+            {
                 //未注册
                 $this->error(__('未注册'));
             }
         }
         $ret = Emslib::check($email, $captcha, $event);
-        if ($ret) {
+        if ($ret)
+        {
             $this->success(__('成功'));
-        } else {
+        }
+        else
+        {
             $this->error(__('验证码不正确'));
         }
     }
+
 }
