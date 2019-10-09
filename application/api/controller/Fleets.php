@@ -53,10 +53,10 @@ class Fleets extends Api
     {
         $data = Db::name('fleet')
             ->alias('f')
-            ->join('fleet_driver fd','df.fleet_id = f.id')
+            ->join('fleet_driver fd','fd.fleet_id = f.id')
             ->where('f.id',$fleet_id)
             ->join('driver d','d.id = fd.driver_id')
-            ->where('name LIKE "%'.$q.'%"')
+            ->where('f.name LIKE "%'.$q.'%"')
             ->field('d.name,d.phone,d.carnum')
             ->paginate(20,$page);
         $this->success('', $data);
