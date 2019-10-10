@@ -25,7 +25,27 @@ class Fleets extends Api
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
-     * @ApiReturn   ()
+     * @ApiReturn   ({
+    "code": 1,
+    "msg": "",
+    "time": "1570699421",
+    "data": {
+    "total": 1,
+    "per_page": 20,
+    "current_page": 1,
+    "last_page": 1,
+    "data": [
+    {
+    "id": 17,
+    "name": "第一车队",
+    "company_id": 4,
+    "num": 2,
+    "fleeter": null,
+    "driver_ids": "3,4"
+    }
+    ]
+    }
+    })
      */
     public function index($page = null,$q=null,$company_id = null)
     {
@@ -47,7 +67,29 @@ class Fleets extends Api
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
-     * @ApiReturn   ()
+     * @ApiReturn   ({
+    "code": 1,
+    "msg": "",
+    "time": "1570699459",
+    "data": {
+    "total": 2,
+    "per_page": 20,
+    "current_page": 1,
+    "last_page": 1,
+    "data": [
+    {
+    "name": "陈道明",
+    "phone": "18712398268",
+    "carnum": "皖B8888"
+    },
+    {
+    "name": "张倩",
+    "phone": "13295573487",
+    "carnum": "粤B3838"
+    }
+    ]
+    }
+    })
      */
     public function member($page = null,$q=null ,$fleet_id= null)
     {
@@ -110,7 +152,7 @@ class Fleets extends Api
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturn   ({
     "code": 1,
-    "msg": "保存成功",
+    "msg": "修改成功",
     "time": "1570532811",
     "data": null
     })
@@ -145,7 +187,7 @@ class Fleets extends Api
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
      * @ApiReturn   ({
     "code": 1,
-    "msg": "保存成功",
+    "msg": "修改成功",
     "time": "1570532811",
     "data": null
     })
@@ -170,7 +212,12 @@ class Fleets extends Api
      * @ApiParams   (name="id", type="integer", required=true, description="ID")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
-     * @ApiReturn   ()
+     * @ApiReturn   ({
+    "code": 1,
+    "msg": "删除成功",
+    "time": "1570532811",
+    "data": null
+    })
      */
     public function del($id=null)
     {

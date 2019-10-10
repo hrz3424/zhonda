@@ -23,7 +23,43 @@ class Drivers extends Api
      * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
-     * @ApiReturn   ()
+     * @ApiReturn   ({
+    "code": 1,
+    "msg": "",
+    "time": "1570699256",
+    "data": {
+    "total": 2,
+    "per_page": 20,
+    "current_page": 1,
+    "last_page": 1,
+    "data": [
+    {
+    "id": 3,
+    "avatar": "/uploads/20191008/6d88f0620a49c79f5d8e5dba134373e3.jpeg",
+    "name": "陈道明",
+    "idcard": "342401199007189234",
+    "nvq": "12345678",
+    "carnum": "皖B8888",
+    "phone": "18712398268",
+    "typedata": "0",
+    "status": "0",
+    "company_id": 4
+    },
+    {
+    "id": 4,
+    "avatar": "/uploads/20191008/6d88f0620a49c79f5d8e5dba134373e3.jpeg",
+    "name": "张倩",
+    "idcard": "342401198906239765",
+    "nvq": "12345678",
+    "carnum": "粤B3838",
+    "phone": "13295573487",
+    "typedata": "0",
+    "status": "0",
+    "company_id": 4
+    }
+    ]
+    }
+    })
      */
     public function index($page = null,$fleet_id = null,$q=null)
     {
@@ -115,7 +151,12 @@ class Drivers extends Api
      * @ApiParams   (name="id", type="integer", required=true, description="ID")
      * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
      * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
-     * @ApiReturn   ()
+     * @ApiReturn   ({
+    "code": 1,
+    "msg": "删除成功",
+    "time": "1570533577",
+    "data": null
+    })
      */
     public function del($id=null)
     {
