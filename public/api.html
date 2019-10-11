@@ -185,16 +185,24 @@
                                                 <a href="javascript:;" data-id="20" class="list-group-item">列表</a>
                                                 <a href="javascript:;" data-id="21" class="list-group-item">新增公司计划</a>
                                                 <a href="javascript:;" data-id="22" class="list-group-item">编辑公司计划</a>
-                                                <a href="javascript:;" data-id="23" class="list-group-item">删除</a>
+                                                <a href="javascript:;" data-id="23" class="list-group-item">公司计划--添加视频</a>
+                                                <a href="javascript:;" data-id="24" class="list-group-item">公司计划--编辑视频</a>
+                                                <a href="javascript:;" data-id="25" class="list-group-item">公司计划--添加试卷</a>
+                                                <a href="javascript:;" data-id="26" class="list-group-item">公司计划--编辑试卷</a>
+                                                <a href="javascript:;" data-id="27" class="list-group-item">公司计划--添加公告</a>
+                                                <a href="javascript:;" data-id="28" class="list-group-item">公司计划--编辑公告</a>
+                                                <a href="javascript:;" data-id="29" class="list-group-item">公司计划--添加文章</a>
+                                                <a href="javascript:;" data-id="30" class="list-group-item">公司计划--编辑公告</a>
+                                                <a href="javascript:;" data-id="31" class="list-group-item">删除</a>
                                             </div>
                                         <a href="#车队接口" class="list-group-item" data-toggle="collapse" data-parent="#sidebar">车队接口  <i class="fa fa-caret-down"></i></a>
                     <div class="child collapse" id="车队接口">
-                                                <a href="javascript:;" data-id="24" class="list-group-item">列表</a>
-                                                <a href="javascript:;" data-id="25" class="list-group-item">车队成员列表</a>
-                                                <a href="javascript:;" data-id="26" class="list-group-item">新增车队</a>
-                                                <a href="javascript:;" data-id="27" class="list-group-item">修改车队</a>
-                                                <a href="javascript:;" data-id="28" class="list-group-item">设置车队长</a>
-                                                <a href="javascript:;" data-id="29" class="list-group-item">删除</a>
+                                                <a href="javascript:;" data-id="32" class="list-group-item">列表</a>
+                                                <a href="javascript:;" data-id="33" class="list-group-item">车队成员列表</a>
+                                                <a href="javascript:;" data-id="34" class="list-group-item">新增车队</a>
+                                                <a href="javascript:;" data-id="35" class="list-group-item">修改车队</a>
+                                                <a href="javascript:;" data-id="36" class="list-group-item">设置车队长</a>
+                                                <a href="javascript:;" data-id="37" class="list-group-item">删除</a>
                                             </div>
                                     </div>
             </div>
@@ -3768,8 +3776,8 @@
                                 <div class="panel panel-default">
                     <div class="panel-heading" id="heading-23">
                         <h4 class="panel-title">
-                            <span class="label label-danger">DELETE</span>
-                            <a data-toggle="collapse" data-parent="#accordion23" href="#collapseOne23"> 删除 <span class="text-muted">api/company_plan/del/id/{id}</span></a>
+                            <span class="label label-primary">POST</span>
+                            <a data-toggle="collapse" data-parent="#accordion23" href="#collapseOne23"> 公司计划--添加视频 <span class="text-muted">api/company_plan/video/id/{id}</span></a>
                         </h4>
                     </div>
                     <div id="collapseOne23" class="panel-collapse collapse">
@@ -3786,6 +3794,1350 @@
                             <div class="tab-content">
 
                                 <div class="tab-pane active" id="info23">
+                                    <div class="well">
+                                        公司计划--添加视频                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>Headers</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>参数</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>ID</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>video_ids</td>
+                                                        <td>Array</td>
+                                                        <td>是</td>
+                                                        <td>视频IDs</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>正文</strong></div>
+                                        <div class="panel-body">
+                                            无                                        </div>
+                                    </div>
+                                </div><!-- #info -->
+
+                                <div class="tab-pane" id="sandbox23">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>参数</strong></div>
+                                                <div class="panel-body">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/video/id/{id}" method="POST" name="form23" id="form23">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="id">id</label>
+                                                            <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="video_ids">video_ids</label>
+                                                            <input type="Array" class="form-control input-sm" id="video_ids" required placeholder="视频IDs" name="video_ids">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <button type="submit" class="btn btn-success send" rel="23">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="23">重置</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>响应输出</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="overflow-x:auto">
+                                                            <pre id="response_headers23"></pre>
+                                                            <pre id="response23"></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回参数</strong></div>
+                                                <div class="panel-body">
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
+                                                                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+
+                                <div class="tab-pane" id="sample23">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pre id="sample_response23">无</pre>
+                                        </div>
+                                    </div>
+                                </div><!-- #sample -->
+
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+                                <div class="panel panel-default">
+                    <div class="panel-heading" id="heading-24">
+                        <h4 class="panel-title">
+                            <span class="label label-primary">POST</span>
+                            <a data-toggle="collapse" data-parent="#accordion24" href="#collapseOne24"> 公司计划--编辑视频 <span class="text-muted">api/company_plan/video_edit/id/{id}</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne24" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab24">
+                                <li class="active"><a href="#info24" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox24" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample24" data-toggle="tab">返回示例</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info24">
+                                    <div class="well">
+                                        公司计划--编辑视频                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>Headers</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>参数</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>ID</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>type</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>获取关联ids=0,修改保存=1</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>video_ids</td>
+                                                        <td>Array</td>
+                                                        <td>是</td>
+                                                        <td>视频IDs</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>正文</strong></div>
+                                        <div class="panel-body">
+                                            无                                        </div>
+                                    </div>
+                                </div><!-- #info -->
+
+                                <div class="tab-pane" id="sandbox24">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>参数</strong></div>
+                                                <div class="panel-body">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/video_edit/id/{id}" method="POST" name="form24" id="form24">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="id">id</label>
+                                                            <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="type">type</label>
+                                                            <input type="integer" class="form-control input-sm" id="type" required placeholder="获取关联ids=0,修改保存=1" name="type">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="video_ids">video_ids</label>
+                                                            <input type="Array" class="form-control input-sm" id="video_ids" required placeholder="视频IDs" name="video_ids">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <button type="submit" class="btn btn-success send" rel="24">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="24">重置</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>响应输出</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="overflow-x:auto">
+                                                            <pre id="response_headers24"></pre>
+                                                            <pre id="response24"></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回参数</strong></div>
+                                                <div class="panel-body">
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
+                                                                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+
+                                <div class="tab-pane" id="sample24">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pre id="sample_response24">无</pre>
+                                        </div>
+                                    </div>
+                                </div><!-- #sample -->
+
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+                                <div class="panel panel-default">
+                    <div class="panel-heading" id="heading-25">
+                        <h4 class="panel-title">
+                            <span class="label label-primary">POST</span>
+                            <a data-toggle="collapse" data-parent="#accordion25" href="#collapseOne25"> 公司计划--添加试卷 <span class="text-muted">api/company_plan/examination/id/{id}</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne25" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab25">
+                                <li class="active"><a href="#info25" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox25" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample25" data-toggle="tab">返回示例</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info25">
+                                    <div class="well">
+                                        公司计划--添加试卷                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>Headers</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>参数</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>ID</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>examination_ids</td>
+                                                        <td>Array</td>
+                                                        <td>是</td>
+                                                        <td>试卷IDs</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>正文</strong></div>
+                                        <div class="panel-body">
+                                            无                                        </div>
+                                    </div>
+                                </div><!-- #info -->
+
+                                <div class="tab-pane" id="sandbox25">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>参数</strong></div>
+                                                <div class="panel-body">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/examination/id/{id}" method="POST" name="form25" id="form25">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="id">id</label>
+                                                            <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="examination_ids">examination_ids</label>
+                                                            <input type="Array" class="form-control input-sm" id="examination_ids" required placeholder="试卷IDs" name="examination_ids">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <button type="submit" class="btn btn-success send" rel="25">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="25">重置</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>响应输出</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="overflow-x:auto">
+                                                            <pre id="response_headers25"></pre>
+                                                            <pre id="response25"></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回参数</strong></div>
+                                                <div class="panel-body">
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
+                                                                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+
+                                <div class="tab-pane" id="sample25">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pre id="sample_response25">无</pre>
+                                        </div>
+                                    </div>
+                                </div><!-- #sample -->
+
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+                                <div class="panel panel-default">
+                    <div class="panel-heading" id="heading-26">
+                        <h4 class="panel-title">
+                            <span class="label label-primary">POST</span>
+                            <a data-toggle="collapse" data-parent="#accordion26" href="#collapseOne26"> 公司计划--编辑试卷 <span class="text-muted">api/company_plan/examination_edit/id/{id}</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne26" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab26">
+                                <li class="active"><a href="#info26" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox26" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample26" data-toggle="tab">返回示例</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info26">
+                                    <div class="well">
+                                        公司计划--编辑试卷                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>Headers</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>参数</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>ID</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>type</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>获取关联ids=0,修改保存=1</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>examination_ids</td>
+                                                        <td>Array</td>
+                                                        <td>是</td>
+                                                        <td>试卷IDs</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>正文</strong></div>
+                                        <div class="panel-body">
+                                            无                                        </div>
+                                    </div>
+                                </div><!-- #info -->
+
+                                <div class="tab-pane" id="sandbox26">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>参数</strong></div>
+                                                <div class="panel-body">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/examination_edit/id/{id}" method="POST" name="form26" id="form26">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="id">id</label>
+                                                            <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="type">type</label>
+                                                            <input type="integer" class="form-control input-sm" id="type" required placeholder="获取关联ids=0,修改保存=1" name="type">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="examination_ids">examination_ids</label>
+                                                            <input type="Array" class="form-control input-sm" id="examination_ids" required placeholder="试卷IDs" name="examination_ids">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <button type="submit" class="btn btn-success send" rel="26">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="26">重置</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>响应输出</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="overflow-x:auto">
+                                                            <pre id="response_headers26"></pre>
+                                                            <pre id="response26"></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回参数</strong></div>
+                                                <div class="panel-body">
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
+                                                                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+
+                                <div class="tab-pane" id="sample26">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pre id="sample_response26">无</pre>
+                                        </div>
+                                    </div>
+                                </div><!-- #sample -->
+
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+                                <div class="panel panel-default">
+                    <div class="panel-heading" id="heading-27">
+                        <h4 class="panel-title">
+                            <span class="label label-primary">POST</span>
+                            <a data-toggle="collapse" data-parent="#accordion27" href="#collapseOne27"> 公司计划--添加公告 <span class="text-muted">api/company_plan/notice/id/{id}</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne27" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab27">
+                                <li class="active"><a href="#info27" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox27" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample27" data-toggle="tab">返回示例</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info27">
+                                    <div class="well">
+                                        公司计划--添加公告                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>Headers</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>参数</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>ID</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>notice_ids</td>
+                                                        <td>Array</td>
+                                                        <td>是</td>
+                                                        <td>公告IDs</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>正文</strong></div>
+                                        <div class="panel-body">
+                                            无                                        </div>
+                                    </div>
+                                </div><!-- #info -->
+
+                                <div class="tab-pane" id="sandbox27">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>参数</strong></div>
+                                                <div class="panel-body">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/notice/id/{id}" method="POST" name="form27" id="form27">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="id">id</label>
+                                                            <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="notice_ids">notice_ids</label>
+                                                            <input type="Array" class="form-control input-sm" id="notice_ids" required placeholder="公告IDs" name="notice_ids">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <button type="submit" class="btn btn-success send" rel="27">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="27">重置</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>响应输出</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="overflow-x:auto">
+                                                            <pre id="response_headers27"></pre>
+                                                            <pre id="response27"></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回参数</strong></div>
+                                                <div class="panel-body">
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
+                                                                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+
+                                <div class="tab-pane" id="sample27">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pre id="sample_response27">无</pre>
+                                        </div>
+                                    </div>
+                                </div><!-- #sample -->
+
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+                                <div class="panel panel-default">
+                    <div class="panel-heading" id="heading-28">
+                        <h4 class="panel-title">
+                            <span class="label label-primary">POST</span>
+                            <a data-toggle="collapse" data-parent="#accordion28" href="#collapseOne28"> 公司计划--编辑公告 <span class="text-muted">api/company_plan/notice_edit/id/{id}</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne28" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab28">
+                                <li class="active"><a href="#info28" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox28" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample28" data-toggle="tab">返回示例</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info28">
+                                    <div class="well">
+                                        公司计划--编辑公告                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>Headers</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>参数</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>ID</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>type</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>获取关联ids=0,修改保存=1</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>notice_ids</td>
+                                                        <td>Array</td>
+                                                        <td>是</td>
+                                                        <td>公告IDs</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>正文</strong></div>
+                                        <div class="panel-body">
+                                            无                                        </div>
+                                    </div>
+                                </div><!-- #info -->
+
+                                <div class="tab-pane" id="sandbox28">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>参数</strong></div>
+                                                <div class="panel-body">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/notice_edit/id/{id}" method="POST" name="form28" id="form28">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="id">id</label>
+                                                            <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="type">type</label>
+                                                            <input type="integer" class="form-control input-sm" id="type" required placeholder="获取关联ids=0,修改保存=1" name="type">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="notice_ids">notice_ids</label>
+                                                            <input type="Array" class="form-control input-sm" id="notice_ids" required placeholder="公告IDs" name="notice_ids">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <button type="submit" class="btn btn-success send" rel="28">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="28">重置</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>响应输出</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="overflow-x:auto">
+                                                            <pre id="response_headers28"></pre>
+                                                            <pre id="response28"></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回参数</strong></div>
+                                                <div class="panel-body">
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
+                                                                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+
+                                <div class="tab-pane" id="sample28">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pre id="sample_response28">无</pre>
+                                        </div>
+                                    </div>
+                                </div><!-- #sample -->
+
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+                                <div class="panel panel-default">
+                    <div class="panel-heading" id="heading-29">
+                        <h4 class="panel-title">
+                            <span class="label label-primary">POST</span>
+                            <a data-toggle="collapse" data-parent="#accordion29" href="#collapseOne29"> 公司计划--添加文章 <span class="text-muted">api/company_plan/article/id/{id}</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne29" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab29">
+                                <li class="active"><a href="#info29" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox29" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample29" data-toggle="tab">返回示例</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info29">
+                                    <div class="well">
+                                        公司计划--添加文章                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>Headers</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>参数</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>ID</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>article_ids</td>
+                                                        <td>Array</td>
+                                                        <td>是</td>
+                                                        <td>文章IDs</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>正文</strong></div>
+                                        <div class="panel-body">
+                                            无                                        </div>
+                                    </div>
+                                </div><!-- #info -->
+
+                                <div class="tab-pane" id="sandbox29">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>参数</strong></div>
+                                                <div class="panel-body">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/article/id/{id}" method="POST" name="form29" id="form29">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="id">id</label>
+                                                            <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="article_ids">article_ids</label>
+                                                            <input type="Array" class="form-control input-sm" id="article_ids" required placeholder="文章IDs" name="article_ids">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <button type="submit" class="btn btn-success send" rel="29">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="29">重置</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>响应输出</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="overflow-x:auto">
+                                                            <pre id="response_headers29"></pre>
+                                                            <pre id="response29"></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回参数</strong></div>
+                                                <div class="panel-body">
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
+                                                                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+
+                                <div class="tab-pane" id="sample29">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pre id="sample_response29">无</pre>
+                                        </div>
+                                    </div>
+                                </div><!-- #sample -->
+
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+                                <div class="panel panel-default">
+                    <div class="panel-heading" id="heading-30">
+                        <h4 class="panel-title">
+                            <span class="label label-primary">POST</span>
+                            <a data-toggle="collapse" data-parent="#accordion30" href="#collapseOne30"> 公司计划--编辑公告 <span class="text-muted">api/company_plan/article_edit/id/{id}</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne30" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab30">
+                                <li class="active"><a href="#info30" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox30" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample30" data-toggle="tab">返回示例</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info30">
+                                    <div class="well">
+                                        公司计划--编辑公告                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>Headers</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>token</td>
+                                                        <td>string</td>
+                                                        <td>是</td>
+                                                        <td>请求的Token</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>参数</strong></div>
+                                        <div class="panel-body">
+                                                                                        <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>名称</th>
+                                                        <th>类型</th>
+                                                        <th>必选</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                        <tr>
+                                                        <td>id</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>ID</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>type</td>
+                                                        <td>integer</td>
+                                                        <td>是</td>
+                                                        <td>获取关联ids=0,修改保存=1</td>
+                                                    </tr>
+                                                                                                        <tr>
+                                                        <td>article_ids</td>
+                                                        <td>Array</td>
+                                                        <td>是</td>
+                                                        <td>公告IDs</td>
+                                                    </tr>
+                                                                                                    </tbody>
+                                            </table>
+                                                                                    </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><strong>正文</strong></div>
+                                        <div class="panel-body">
+                                            无                                        </div>
+                                    </div>
+                                </div><!-- #info -->
+
+                                <div class="tab-pane" id="sandbox30">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>Headers</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="headers">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="token">token</label>
+                                                            <input type="string" class="form-control input-sm" id="token" required placeholder="请求的Token - Ex: " name="token">
+                                                        </div>
+                                                                                                            </div>
+                                                </div>
+                                            </div>
+                                                                                        <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>参数</strong></div>
+                                                <div class="panel-body">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/article_edit/id/{id}" method="POST" name="form30" id="form30">
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="id">id</label>
+                                                            <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="type">type</label>
+                                                            <input type="integer" class="form-control input-sm" id="type" required placeholder="获取关联ids=0,修改保存=1" name="type">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <label class="control-label" for="article_ids">article_ids</label>
+                                                            <input type="Array" class="form-control input-sm" id="article_ids" required placeholder="公告IDs" name="article_ids">
+                                                        </div>
+                                                                                                                <div class="form-group">
+                                                            <button type="submit" class="btn btn-success send" rel="30">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="30">重置</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>响应输出</strong></div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="overflow-x:auto">
+                                                            <pre id="response_headers30"></pre>
+                                                            <pre id="response30"></pre>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回参数</strong></div>
+                                                <div class="panel-body">
+                                                                                                        <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>名称</th>
+                                                                <th>类型</th>
+                                                                <th>描述</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                                                                        <tr>
+                                                                <td>code</td>
+                                                                <td>integer</td>
+                                                                <td></td>
+                                                            </tr>
+                                                                                                                    </tbody>
+                                                    </table>
+                                                                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+
+                                <div class="tab-pane" id="sample30">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pre id="sample_response30">无</pre>
+                                        </div>
+                                    </div>
+                                </div><!-- #sample -->
+
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+                                <div class="panel panel-default">
+                    <div class="panel-heading" id="heading-31">
+                        <h4 class="panel-title">
+                            <span class="label label-danger">DELETE</span>
+                            <a data-toggle="collapse" data-parent="#accordion31" href="#collapseOne31"> 删除 <span class="text-muted">api/company_plan/del/id/{id}</span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne31" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab31">
+                                <li class="active"><a href="#info31" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox31" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample31" data-toggle="tab">返回示例</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info31">
                                     <div class="well">
                                         删除                                    </div>
                                     <div class="panel panel-default">
@@ -3841,7 +5193,7 @@
                                     </div>
                                 </div><!-- #info -->
 
-                                <div class="tab-pane" id="sandbox23">
+                                <div class="tab-pane" id="sandbox31">
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
@@ -3858,14 +5210,14 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/del/id/{id}" method="delete" name="form23" id="form23">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/company_plan/del/id/{id}" method="delete" name="form31" id="form31">
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="id">id</label>
                                                             <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <button type="submit" class="btn btn-success send" rel="23">提交</button>
-                                                            <button type="reset" class="btn btn-info" rel="23">重置</button>
+                                                            <button type="submit" class="btn btn-success send" rel="31">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="31">重置</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -3875,8 +5227,8 @@
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-12" style="overflow-x:auto">
-                                                            <pre id="response_headers23"></pre>
-                                                            <pre id="response23"></pre>
+                                                            <pre id="response_headers31"></pre>
+                                                            <pre id="response31"></pre>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3911,10 +5263,10 @@
                                     </div>
                                 </div><!-- #sandbox -->
 
-                                <div class="tab-pane" id="sample23">
+                                <div class="tab-pane" id="sample31">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response23">{
+                                            <pre id="sample_response31">{
     "code": 1,
     "msg": "删除成功",
     "time": "1570532811",
@@ -3931,26 +5283,26 @@
                                 <h2>车队接口</h2>
                 <hr>
                                 <div class="panel panel-default">
-                    <div class="panel-heading" id="heading-24">
+                    <div class="panel-heading" id="heading-32">
                         <h4 class="panel-title">
                             <span class="label label-success">GET</span>
-                            <a data-toggle="collapse" data-parent="#accordion24" href="#collapseOne24"> 列表 <span class="text-muted">api/fleets/index/</span></a>
+                            <a data-toggle="collapse" data-parent="#accordion32" href="#collapseOne32"> 列表 <span class="text-muted">api/fleets/index/</span></a>
                         </h4>
                     </div>
-                    <div id="collapseOne24" class="panel-collapse collapse">
+                    <div id="collapseOne32" class="panel-collapse collapse">
                         <div class="panel-body">
 
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" id="doctab24">
-                                <li class="active"><a href="#info24" data-toggle="tab">基础信息</a></li>
-                                <li><a href="#sandbox24" data-toggle="tab">在线测试</a></li>
-                                <li><a href="#sample24" data-toggle="tab">返回示例</a></li>
+                            <ul class="nav nav-tabs" id="doctab32">
+                                <li class="active"><a href="#info32" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox32" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample32" data-toggle="tab">返回示例</a></li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
 
-                                <div class="tab-pane active" id="info24">
+                                <div class="tab-pane active" id="info32">
                                     <div class="well">
                                         列表                                    </div>
                                     <div class="panel panel-default">
@@ -4018,7 +5370,7 @@
                                     </div>
                                 </div><!-- #info -->
 
-                                <div class="tab-pane" id="sandbox24">
+                                <div class="tab-pane" id="sandbox32">
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
@@ -4035,7 +5387,7 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/index/" method="GET" name="form24" id="form24">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/index/" method="GET" name="form32" id="form32">
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="company_id">company_id</label>
                                                             <input type="string" class="form-control input-sm" id="company_id" required placeholder="公司ID" name="company_id">
@@ -4049,8 +5401,8 @@
                                                             <input type="string" class="form-control input-sm" id="page" required placeholder="页数" name="page">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <button type="submit" class="btn btn-success send" rel="24">提交</button>
-                                                            <button type="reset" class="btn btn-info" rel="24">重置</button>
+                                                            <button type="submit" class="btn btn-success send" rel="32">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="32">重置</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -4060,8 +5412,8 @@
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-12" style="overflow-x:auto">
-                                                            <pre id="response_headers24"></pre>
-                                                            <pre id="response24"></pre>
+                                                            <pre id="response_headers32"></pre>
+                                                            <pre id="response32"></pre>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4096,10 +5448,10 @@
                                     </div>
                                 </div><!-- #sandbox -->
 
-                                <div class="tab-pane" id="sample24">
+                                <div class="tab-pane" id="sample32">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response24">{
+                                            <pre id="sample_response32">{
     "code": 1,
     "msg": "",
     "time": "1570699421",
@@ -4129,26 +5481,26 @@
                     </div>
                 </div>
                                 <div class="panel panel-default">
-                    <div class="panel-heading" id="heading-25">
+                    <div class="panel-heading" id="heading-33">
                         <h4 class="panel-title">
                             <span class="label label-success">GET</span>
-                            <a data-toggle="collapse" data-parent="#accordion25" href="#collapseOne25"> 车队成员列表 <span class="text-muted">api/fleets/member/</span></a>
+                            <a data-toggle="collapse" data-parent="#accordion33" href="#collapseOne33"> 车队成员列表 <span class="text-muted">api/fleets/member/</span></a>
                         </h4>
                     </div>
-                    <div id="collapseOne25" class="panel-collapse collapse">
+                    <div id="collapseOne33" class="panel-collapse collapse">
                         <div class="panel-body">
 
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" id="doctab25">
-                                <li class="active"><a href="#info25" data-toggle="tab">基础信息</a></li>
-                                <li><a href="#sandbox25" data-toggle="tab">在线测试</a></li>
-                                <li><a href="#sample25" data-toggle="tab">返回示例</a></li>
+                            <ul class="nav nav-tabs" id="doctab33">
+                                <li class="active"><a href="#info33" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox33" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample33" data-toggle="tab">返回示例</a></li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
 
-                                <div class="tab-pane active" id="info25">
+                                <div class="tab-pane active" id="info33">
                                     <div class="well">
                                         车队成员列表                                    </div>
                                     <div class="panel panel-default">
@@ -4210,7 +5562,7 @@
                                     </div>
                                 </div><!-- #info -->
 
-                                <div class="tab-pane" id="sandbox25">
+                                <div class="tab-pane" id="sandbox33">
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
@@ -4227,7 +5579,7 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/member/" method="GET" name="form25" id="form25">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/member/" method="GET" name="form33" id="form33">
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="fleet_id">fleet_id</label>
                                                             <input type="string" class="form-control input-sm" id="fleet_id" required placeholder="车队ID" name="fleet_id">
@@ -4237,8 +5589,8 @@
                                                             <input type="string" class="form-control input-sm" id="page" required placeholder="页数" name="page">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <button type="submit" class="btn btn-success send" rel="25">提交</button>
-                                                            <button type="reset" class="btn btn-info" rel="25">重置</button>
+                                                            <button type="submit" class="btn btn-success send" rel="33">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="33">重置</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -4248,8 +5600,8 @@
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-12" style="overflow-x:auto">
-                                                            <pre id="response_headers25"></pre>
-                                                            <pre id="response25"></pre>
+                                                            <pre id="response_headers33"></pre>
+                                                            <pre id="response33"></pre>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4284,10 +5636,10 @@
                                     </div>
                                 </div><!-- #sandbox -->
 
-                                <div class="tab-pane" id="sample25">
+                                <div class="tab-pane" id="sample33">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response25">{
+                                            <pre id="sample_response33">{
     "code": 1,
     "msg": "",
     "time": "1570699459",
@@ -4319,26 +5671,26 @@
                     </div>
                 </div>
                                 <div class="panel panel-default">
-                    <div class="panel-heading" id="heading-26">
+                    <div class="panel-heading" id="heading-34">
                         <h4 class="panel-title">
                             <span class="label label-primary">POST</span>
-                            <a data-toggle="collapse" data-parent="#accordion26" href="#collapseOne26"> 新增车队 <span class="text-muted">api/fleets/add/</span></a>
+                            <a data-toggle="collapse" data-parent="#accordion34" href="#collapseOne34"> 新增车队 <span class="text-muted">api/fleets/add/</span></a>
                         </h4>
                     </div>
-                    <div id="collapseOne26" class="panel-collapse collapse">
+                    <div id="collapseOne34" class="panel-collapse collapse">
                         <div class="panel-body">
 
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" id="doctab26">
-                                <li class="active"><a href="#info26" data-toggle="tab">基础信息</a></li>
-                                <li><a href="#sandbox26" data-toggle="tab">在线测试</a></li>
-                                <li><a href="#sample26" data-toggle="tab">返回示例</a></li>
+                            <ul class="nav nav-tabs" id="doctab34">
+                                <li class="active"><a href="#info34" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox34" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample34" data-toggle="tab">返回示例</a></li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
 
-                                <div class="tab-pane active" id="info26">
+                                <div class="tab-pane active" id="info34">
                                     <div class="well">
                                         新增车队                                    </div>
                                     <div class="panel panel-default">
@@ -4406,7 +5758,7 @@
                                     </div>
                                 </div><!-- #info -->
 
-                                <div class="tab-pane" id="sandbox26">
+                                <div class="tab-pane" id="sandbox34">
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
@@ -4423,7 +5775,7 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/add/" method="POST" name="form26" id="form26">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/add/" method="POST" name="form34" id="form34">
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="company_id">company_id</label>
                                                             <input type="integer" class="form-control input-sm" id="company_id" required placeholder="公司ID" name="company_id">
@@ -4437,8 +5789,8 @@
                                                             <input type="Array" class="form-control input-sm" id="driver_ids" required placeholder="驾驶员ID" name="driver_ids">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <button type="submit" class="btn btn-success send" rel="26">提交</button>
-                                                            <button type="reset" class="btn btn-info" rel="26">重置</button>
+                                                            <button type="submit" class="btn btn-success send" rel="34">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="34">重置</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -4448,8 +5800,8 @@
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-12" style="overflow-x:auto">
-                                                            <pre id="response_headers26"></pre>
-                                                            <pre id="response26"></pre>
+                                                            <pre id="response_headers34"></pre>
+                                                            <pre id="response34"></pre>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4484,10 +5836,10 @@
                                     </div>
                                 </div><!-- #sandbox -->
 
-                                <div class="tab-pane" id="sample26">
+                                <div class="tab-pane" id="sample34">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response26">{
+                                            <pre id="sample_response34">{
         "code": 1,
         "msg": "保存成功",
         "time": "1570532811",
@@ -4502,26 +5854,26 @@
                     </div>
                 </div>
                                 <div class="panel panel-default">
-                    <div class="panel-heading" id="heading-27">
+                    <div class="panel-heading" id="heading-35">
                         <h4 class="panel-title">
                             <span class="label label-primary">POST</span>
-                            <a data-toggle="collapse" data-parent="#accordion27" href="#collapseOne27"> 修改车队 <span class="text-muted">api/fleets/edit/id/{id}</span></a>
+                            <a data-toggle="collapse" data-parent="#accordion35" href="#collapseOne35"> 修改车队 <span class="text-muted">api/fleets/edit/id/{id}</span></a>
                         </h4>
                     </div>
-                    <div id="collapseOne27" class="panel-collapse collapse">
+                    <div id="collapseOne35" class="panel-collapse collapse">
                         <div class="panel-body">
 
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" id="doctab27">
-                                <li class="active"><a href="#info27" data-toggle="tab">基础信息</a></li>
-                                <li><a href="#sandbox27" data-toggle="tab">在线测试</a></li>
-                                <li><a href="#sample27" data-toggle="tab">返回示例</a></li>
+                            <ul class="nav nav-tabs" id="doctab35">
+                                <li class="active"><a href="#info35" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox35" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample35" data-toggle="tab">返回示例</a></li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
 
-                                <div class="tab-pane active" id="info27">
+                                <div class="tab-pane active" id="info35">
                                     <div class="well">
                                         修改车队                                    </div>
                                     <div class="panel panel-default">
@@ -4589,7 +5941,7 @@
                                     </div>
                                 </div><!-- #info -->
 
-                                <div class="tab-pane" id="sandbox27">
+                                <div class="tab-pane" id="sandbox35">
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
@@ -4606,7 +5958,7 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/edit/id/{id}" method="POST" name="form27" id="form27">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/edit/id/{id}" method="POST" name="form35" id="form35">
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="name">name</label>
                                                             <input type="string" class="form-control input-sm" id="name" required placeholder="车队名称" name="name">
@@ -4620,8 +5972,8 @@
                                                             <input type="Array" class="form-control input-sm" id="driver_ids" required placeholder="驾驶员ID" name="driver_ids">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <button type="submit" class="btn btn-success send" rel="27">提交</button>
-                                                            <button type="reset" class="btn btn-info" rel="27">重置</button>
+                                                            <button type="submit" class="btn btn-success send" rel="35">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="35">重置</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -4631,8 +5983,8 @@
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-12" style="overflow-x:auto">
-                                                            <pre id="response_headers27"></pre>
-                                                            <pre id="response27"></pre>
+                                                            <pre id="response_headers35"></pre>
+                                                            <pre id="response35"></pre>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4667,10 +6019,10 @@
                                     </div>
                                 </div><!-- #sandbox -->
 
-                                <div class="tab-pane" id="sample27">
+                                <div class="tab-pane" id="sample35">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response27">{
+                                            <pre id="sample_response35">{
     "code": 1,
     "msg": "修改成功",
     "time": "1570532811",
@@ -4685,26 +6037,26 @@
                     </div>
                 </div>
                                 <div class="panel panel-default">
-                    <div class="panel-heading" id="heading-28">
+                    <div class="panel-heading" id="heading-36">
                         <h4 class="panel-title">
                             <span class="label label-primary">POST</span>
-                            <a data-toggle="collapse" data-parent="#accordion28" href="#collapseOne28"> 设置车队长 <span class="text-muted">api/fleets/set_fleeter/id/{id}</span></a>
+                            <a data-toggle="collapse" data-parent="#accordion36" href="#collapseOne36"> 设置车队长 <span class="text-muted">api/fleets/set_fleeter/id/{id}</span></a>
                         </h4>
                     </div>
-                    <div id="collapseOne28" class="panel-collapse collapse">
+                    <div id="collapseOne36" class="panel-collapse collapse">
                         <div class="panel-body">
 
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" id="doctab28">
-                                <li class="active"><a href="#info28" data-toggle="tab">基础信息</a></li>
-                                <li><a href="#sandbox28" data-toggle="tab">在线测试</a></li>
-                                <li><a href="#sample28" data-toggle="tab">返回示例</a></li>
+                            <ul class="nav nav-tabs" id="doctab36">
+                                <li class="active"><a href="#info36" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox36" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample36" data-toggle="tab">返回示例</a></li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
 
-                                <div class="tab-pane active" id="info28">
+                                <div class="tab-pane active" id="info36">
                                     <div class="well">
                                         设置车队长                                    </div>
                                     <div class="panel panel-default">
@@ -4772,7 +6124,7 @@
                                     </div>
                                 </div><!-- #info -->
 
-                                <div class="tab-pane" id="sandbox28">
+                                <div class="tab-pane" id="sandbox36">
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
@@ -4789,7 +6141,7 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/set_fleeter/id/{id}" method="POST" name="form28" id="form28">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/set_fleeter/id/{id}" method="POST" name="form36" id="form36">
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="fleeter">fleeter</label>
                                                             <input type="Array" class="form-control input-sm" id="fleeter" required placeholder="车队长" name="fleeter">
@@ -4803,8 +6155,8 @@
                                                             <input type="Array" class="form-control input-sm" id="driver_ids" required placeholder="车队长ID" name="driver_ids">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <button type="submit" class="btn btn-success send" rel="28">提交</button>
-                                                            <button type="reset" class="btn btn-info" rel="28">重置</button>
+                                                            <button type="submit" class="btn btn-success send" rel="36">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="36">重置</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -4814,8 +6166,8 @@
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-12" style="overflow-x:auto">
-                                                            <pre id="response_headers28"></pre>
-                                                            <pre id="response28"></pre>
+                                                            <pre id="response_headers36"></pre>
+                                                            <pre id="response36"></pre>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4850,10 +6202,10 @@
                                     </div>
                                 </div><!-- #sandbox -->
 
-                                <div class="tab-pane" id="sample28">
+                                <div class="tab-pane" id="sample36">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response28">{
+                                            <pre id="sample_response36">{
     "code": 1,
     "msg": "修改成功",
     "time": "1570532811",
@@ -4868,26 +6220,26 @@
                     </div>
                 </div>
                                 <div class="panel panel-default">
-                    <div class="panel-heading" id="heading-29">
+                    <div class="panel-heading" id="heading-37">
                         <h4 class="panel-title">
                             <span class="label label-danger">DELETE</span>
-                            <a data-toggle="collapse" data-parent="#accordion29" href="#collapseOne29"> 删除 <span class="text-muted">api/fleets/del/id/{id}</span></a>
+                            <a data-toggle="collapse" data-parent="#accordion37" href="#collapseOne37"> 删除 <span class="text-muted">api/fleets/del/id/{id}</span></a>
                         </h4>
                     </div>
-                    <div id="collapseOne29" class="panel-collapse collapse">
+                    <div id="collapseOne37" class="panel-collapse collapse">
                         <div class="panel-body">
 
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" id="doctab29">
-                                <li class="active"><a href="#info29" data-toggle="tab">基础信息</a></li>
-                                <li><a href="#sandbox29" data-toggle="tab">在线测试</a></li>
-                                <li><a href="#sample29" data-toggle="tab">返回示例</a></li>
+                            <ul class="nav nav-tabs" id="doctab37">
+                                <li class="active"><a href="#info37" data-toggle="tab">基础信息</a></li>
+                                <li><a href="#sandbox37" data-toggle="tab">在线测试</a></li>
+                                <li><a href="#sample37" data-toggle="tab">返回示例</a></li>
                             </ul>
 
                             <!-- Tab panes -->
                             <div class="tab-content">
 
-                                <div class="tab-pane active" id="info29">
+                                <div class="tab-pane active" id="info37">
                                     <div class="well">
                                         删除                                    </div>
                                     <div class="panel panel-default">
@@ -4943,7 +6295,7 @@
                                     </div>
                                 </div><!-- #info -->
 
-                                <div class="tab-pane" id="sandbox29">
+                                <div class="tab-pane" id="sandbox37">
                                     <div class="row">
                                         <div class="col-md-12">
                                                                                         <div class="panel panel-default">
@@ -4960,14 +6312,14 @@
                                                                                         <div class="panel panel-default">
                                                 <div class="panel-heading"><strong>参数</strong></div>
                                                 <div class="panel-body">
-                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/del/id/{id}" method="delete" name="form29" id="form29">
+                                                    <form enctype="application/x-www-form-urlencoded" role="form" action="api/fleets/del/id/{id}" method="delete" name="form37" id="form37">
                                                                                                                 <div class="form-group">
                                                             <label class="control-label" for="id">id</label>
                                                             <input type="integer" class="form-control input-sm" id="id" required placeholder="ID" name="id">
                                                         </div>
                                                                                                                 <div class="form-group">
-                                                            <button type="submit" class="btn btn-success send" rel="29">提交</button>
-                                                            <button type="reset" class="btn btn-info" rel="29">重置</button>
+                                                            <button type="submit" class="btn btn-success send" rel="37">提交</button>
+                                                            <button type="reset" class="btn btn-info" rel="37">重置</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -4977,8 +6329,8 @@
                                                 <div class="panel-body">
                                                     <div class="row">
                                                         <div class="col-md-12" style="overflow-x:auto">
-                                                            <pre id="response_headers29"></pre>
-                                                            <pre id="response29"></pre>
+                                                            <pre id="response_headers37"></pre>
+                                                            <pre id="response37"></pre>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -5013,10 +6365,10 @@
                                     </div>
                                 </div><!-- #sandbox -->
 
-                                <div class="tab-pane" id="sample29">
+                                <div class="tab-pane" id="sample37">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <pre id="sample_response29">{
+                                            <pre id="sample_response37">{
     "code": 1,
     "msg": "删除成功",
     "time": "1570532811",
@@ -5036,7 +6388,7 @@
 
             <div class="row mt0 footer">
                 <div class="col-md-6" align="left">
-                    Generated on 2019-10-11 19:53:40                </div>
+                    Generated on 2019-10-11 20:59:08                </div>
                 <div class="col-md-6" align="right">
                     <a href="https://www.fastadmin.net" target="_blank">FastAdmin</a>
                 </div>

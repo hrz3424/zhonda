@@ -175,6 +175,193 @@ class CompanyPlan extends Api
     }
 
     /**
+     * 公司计划--添加视频
+     * @ApiMethod   (POST)
+     * @ApiRoute    (api/company_plan/video/id/{id})
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="id", type="integer", required=true, description="ID")
+     * @ApiParams   (name="video_ids", type="Array", required=true, description="视频IDs")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ()
+     */
+    public function video($id =null ,$video_ids=[])
+    {
+        foreach($video_ids as $item){
+            Db::name('plan_video')->insert(['plan_id' => $id,'videodetail_id' => $item]);
+        }
+        $this->success('添加成功');
+    }
+
+    /**
+     * 公司计划--编辑视频
+     * @ApiMethod   (POST)
+     * @ApiRoute    (api/company_plan/video_edit/id/{id})
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="id", type="integer", required=true, description="ID")
+     * @ApiParams   (name="type", type="integer", required=true, description="获取关联ids=0,修改保存=1")
+     * @ApiParams   (name="video_ids", type="Array", required=true, description="视频IDs")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ()
+     */
+    public function video_edit($id =null ,$video_ids=[],$type=null)
+    {
+        switch ($type) {
+            case 0:
+                $data= Db::name('plan_video')->where('plan_id',$id)->column('videodetail_id');
+                $this->success('', $data);
+                break;
+            case 1:
+                Db::name('plan_video')->where('plan_id',$id)->delete();
+                foreach($video_ids as $item){
+                    Db::name('plan_video')->insert(['plan_id' => $id,'videodetail_id' => $item]);
+                }
+                $this->success('修改成功');
+                break;
+        }
+    }
+
+    /**
+     * 公司计划--添加试卷
+     * @ApiMethod   (POST)
+     * @ApiRoute    (api/company_plan/examination/id/{id})
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="id", type="integer", required=true, description="ID")
+     * @ApiParams   (name="examination_ids", type="Array", required=true, description="试卷IDs")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ()
+     */
+    public function examination($id =null ,$examination_ids=[])
+    {
+        foreach($examination_ids as $item){
+            Db::name('plan_examination')->insert(['plan_id' => $id,'examination_id' => $item]);
+        }
+        $this->success('添加成功');
+    }
+
+    /**
+     * 公司计划--编辑试卷
+     * @ApiMethod   (POST)
+     * @ApiRoute    (api/company_plan/examination_edit/id/{id})
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="id", type="integer", required=true, description="ID")
+     * @ApiParams   (name="type", type="integer", required=true, description="获取关联ids=0,修改保存=1")
+     * @ApiParams   (name="examination_ids", type="Array", required=true, description="试卷IDs")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ()
+     */
+    public function examination_edit($id =null ,$examination_ids=[],$type=null)
+    {
+        switch ($type) {
+            case 0:
+                $data= Db::name('plan_examination')->where('plan_id',$id)->column('examination_id');
+                $this->success('', $data);
+                break;
+            case 1:
+                Db::name('plan_examination')->where('plan_id',$id)->delete();
+                foreach($examination_ids as $item){
+                    Db::name('plan_examination')->insert(['plan_id' => $id,'examination_id' => $item]);
+                }
+                $this->success('修改成功');
+                break;
+        }
+    }
+
+    /**
+     * 公司计划--添加公告
+     * @ApiMethod   (POST)
+     * @ApiRoute    (api/company_plan/notice/id/{id})
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="id", type="integer", required=true, description="ID")
+     * @ApiParams   (name="notice_ids", type="Array", required=true, description="公告IDs")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ()
+     */
+    public function notice($id =null ,$notice_ids=[])
+    {
+        foreach($notice_ids as $item){
+            Db::name('plan_notice')->insert(['plan_id' => $id,'notice_id' => $item]);
+        }
+        $this->success('添加成功');
+
+    }
+
+    /**
+     * 公司计划--编辑公告
+     * @ApiMethod   (POST)
+     * @ApiRoute    (api/company_plan/notice_edit/id/{id})
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="id", type="integer", required=true, description="ID")
+     * @ApiParams   (name="type", type="integer", required=true, description="获取关联ids=0,修改保存=1")
+     * @ApiParams   (name="notice_ids", type="Array", required=true, description="公告IDs")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ()
+     */
+    public function notice_edit($id =null ,$notice_ids=[],$type=null)
+    {
+        switch ($type) {
+            case 0:
+                $data= Db::name('plan_notice')->where('plan_id',$id)->column('notice_id');
+                $this->success('', $data);
+                break;
+            case 1:
+                Db::name('plan_notice')->where('plan_id',$id)->delete();
+                foreach($notice_ids as $item){
+                    Db::name('plan_notice')->insert(['plan_id' => $id,'notice_id' => $item]);
+                }
+                $this->success('修改成功');
+                break;
+        }
+    }
+
+    /**
+     * 公司计划--添加文章
+     * @ApiMethod   (POST)
+     * @ApiRoute    (api/company_plan/article/id/{id})
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="id", type="integer", required=true, description="ID")
+     * @ApiParams   (name="article_ids", type="Array", required=true, description="文章IDs")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ()
+     */
+    public function article($id =null ,$article_ids=[])
+    {
+        foreach($article_ids as $item){
+            Db::name('plan_article')->insert(['plan_id' => $id,'articledetail_id' => $item]);
+        }
+        $this->success('添加成功');
+
+    }
+
+    /**
+     * 公司计划--编辑公告
+     * @ApiMethod   (POST)
+     * @ApiRoute    (api/company_plan/article_edit/id/{id})
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name="id", type="integer", required=true, description="ID")
+     * @ApiParams   (name="type", type="integer", required=true, description="获取关联ids=0,修改保存=1")
+     * @ApiParams   (name="article_ids", type="Array", required=true, description="公告IDs")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ()
+     */
+    public function article_edit($id =null ,$article_ids=[],$type=null)
+    {
+        switch ($type) {
+            case 0:
+                $data= Db::name('plan_article')->where('plan_id',$id)->column('articledetail_id');
+                $this->success('', $data);
+                break;
+            case 1:
+                Db::name('plan_article')->where('plan_id',$id)->delete();
+                foreach($article_ids as $item){
+                    Db::name('plan_article')->insert(['plan_id' => $id,'articledetail_id' => $item]);
+                }
+                $this->success('修改成功');
+                break;
+        }
+    }
+
+
+    /**
      * 删除
      * @ApiMethod   (delete)
      * @ApiRoute    (api/company_plan/del/id/{id})

@@ -118,7 +118,7 @@ class Plan extends Backend
     public function video($ids = null)
     {
         $row = $this->model->get($ids);
-        $data= Db::table('fa_plan_video')->where('plan_id',$row->id)->column('videodetail_id');
+        $data= Db::name('plan_video')->where('plan_id',$row->id)->column('videodetail_id');
         $row['videoids']  = implode(',',$data);
         $videos = Video::all();
         $this->assign('videos', $videos);
@@ -135,12 +135,12 @@ class Plan extends Backend
             $params = $this->request->post("row/a");
             if ($params) {
                 $params = $this->preExcludeFields($params);
-                Db::table('fa_plan_video')->where('plan_id',$ids)->delete();
+                Db::name('plan_video')->where('plan_id',$ids)->delete();
                 $videoids = explode(",",   $params['videoids']);
                 foreach($videoids as $item){
                     //dump($item);
                     if($item != 0){
-                        Db::table('fa_plan_video')->insert(['plan_id' => $ids,'videodetail_id' => $item]);
+                        Db::name('plan_video')->insert(['plan_id' => $ids,'videodetail_id' => $item]);
                     }
                 }
                 Db::commit();
@@ -158,7 +158,7 @@ class Plan extends Backend
     public function examination($ids = null)
     {
         $row = $this->model->get($ids);
-        $data= Db::table('fa_plan_examination')->where('plan_id',$row->id)->column('examination_id');
+        $data= Db::name('plan_examination')->where('plan_id',$row->id)->column('examination_id');
         $row['examinationids']  = implode(',',$data);
         if (!$row) {
             $this->error(__('No Results were found'));
@@ -173,11 +173,11 @@ class Plan extends Backend
             $params = $this->request->post("row/a");
             if ($params) {
                 $params = $this->preExcludeFields($params);
-                Db::table('fa_plan_examination')->where('plan_id',$ids)->delete();
+                Db::name('plan_examination')->where('plan_id',$ids)->delete();
                 $examinationids = explode(",",   $params['examinationids']);
                 foreach($examinationids as $item){
                     //dump($item);
-                    Db::table('fa_plan_examination')->insert(['plan_id' => $ids,'examination_id' => $item]);
+                    Db::name('plan_examination')->insert(['plan_id' => $ids,'examination_id' => $item]);
                 }
                 Db::commit();
                 $this->success();
@@ -194,7 +194,7 @@ class Plan extends Backend
     public function notice($ids = null)
     {
         $row = $this->model->get($ids);
-        $data= Db::table('fa_plan_notice')->where('plan_id',$row->id)->column('notice_id');
+        $data= Db::name('plan_notice')->where('plan_id',$row->id)->column('notice_id');
         $row['noticeids']  = implode(',',$data);
         if (!$row) {
             $this->error(__('No Results were found'));
@@ -209,11 +209,11 @@ class Plan extends Backend
             $params = $this->request->post("row/a");
             if ($params) {
                 $params = $this->preExcludeFields($params);
-                Db::table('fa_plan_notice')->where('plan_id',$ids)->delete();
+                Db::name('plan_notice')->where('plan_id',$ids)->delete();
                 $noticeids = explode(",",   $params['noticeids']);
                 foreach($noticeids as $item){
                     //dump($item);
-                    Db::table('fa_plan_notice')->insert(['plan_id' => $ids,'notice_id' => $item]);
+                    Db::name('plan_notice')->insert(['plan_id' => $ids,'notice_id' => $item]);
                 }
                 Db::commit();
                 $this->success();
@@ -230,7 +230,7 @@ class Plan extends Backend
     public function article($ids = null)
     {
         $row = $this->model->get($ids);
-        $data= Db::table('fa_plan_article')->where('plan_id',$row->id)->column('articledetail_id');
+        $data= Db::name('plan_article')->where('plan_id',$row->id)->column('articledetail_id');
         $row['articleids']  = implode(',',$data);
         $articles = Article::all();
         $this->assign('articles', $articles);
@@ -247,12 +247,12 @@ class Plan extends Backend
             $params = $this->request->post("row/a");
             if ($params) {
                 $params = $this->preExcludeFields($params);
-                Db::table('fa_plan_article')->where('plan_id',$ids)->delete();
+                Db::name('plan_article')->where('plan_id',$ids)->delete();
                 $articleids = explode(",",   $params['articleids']);
                 foreach($articleids as $item){
                     //dump($item);
                     if($item != 0){
-                        Db::table('fa_plan_article')->insert(['plan_id' => $ids,'articledetail_id' => $item]);
+                        Db::name('plan_article')->insert(['plan_id' => $ids,'articledetail_id' => $item]);
                     }
                 }
                 Db::commit();
