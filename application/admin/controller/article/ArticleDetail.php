@@ -52,20 +52,37 @@ class ArticleDetail extends Backend
                 return $this->selectpage();
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
-            $total = $this->model
+            if($article_id){
+                $total = $this->model
                     ->with(['article'])
                     ->where($where)
                     ->Where('article_id',$article_id)
                     ->order($sort, $order)
                     ->count();
 
-            $list = $this->model
+                $list = $this->model
                     ->with(['article'])
                     ->where($where)
                     ->Where('article_id',$article_id)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
+            }else{
+                $total = $this->model
+                    ->with(['article'])
+                    ->where($where)
+                    ->order($sort, $order)
+                    ->count();
+
+                $list = $this->model
+                    ->with(['article'])
+                    ->where($where)
+                    ->order($sort, $order)
+                    ->limit($offset, $limit)
+                    ->select();
+
+            }
+
 
             foreach ($list as $row) {
 
@@ -85,7 +102,7 @@ class ArticleDetail extends Backend
     {
         $row = $this->model->get($ids);
         //var_dump($row->id);
-        $data= Db::table('fa_article_question')->where('articledetail_id',$row->id)->column('questiondetail_id');
+        $data= Db::name('article_question')->where('articledetail_id',$row->id)->column('questiondetail_id');
         //var_dump($data);
         $row['questionids']  = implode(',',$data);
         $questions = Question::all();
@@ -127,11 +144,11 @@ class ArticleDetail extends Backend
                     $result = $row->allowField(true)->save($params);
                     //$id = $this->model->getLastInsID();
                     //dump($ids);
-                    Db::table('fa_article_question')->where('articledetail_id',$ids)->delete();
+                    Db::name('article_question')->where('articledetail_id',$ids)->delete();
                     $questionids = explode(",",   $params['questionids']);
                     foreach($questionids as $item){
                         //dump($item);
-                        Db::table('fa_article_question')->insert(['articledetail_id' => $ids,'questiondetail_id' => $item]);
+                        Db::name('article_question')->insert(['articledetail_id' => $ids,'questiondetail_id' => $item]);
                     }
                     Db::commit();
                 } catch (ValidateException $e) {
