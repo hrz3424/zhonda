@@ -96,7 +96,7 @@ class ArticleDetail extends Backend
         return $this->view->fetch();
     }
     /**
-     * 编辑
+     * 设置考题
      */
     public function question($ids = null)
     {

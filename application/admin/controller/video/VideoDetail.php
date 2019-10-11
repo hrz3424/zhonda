@@ -3,7 +3,9 @@
 namespace app\admin\controller\video;
 
 use app\common\controller\Backend;
-
+use think\Db;
+use app\admin\model\question\Question;
+use app\admin\model\question\QuestionDetail;
 /**
  * 视频管理
  *
@@ -117,5 +119,113 @@ class VideoDetail extends Backend
 
             return json($result);
         }
+    }
+
+    /**
+     * 设置考题
+     */
+    public function question($ids = null)
+    {
+        $row = $this->model->get($ids);
+        //var_dump($row->id);
+        $data= Db::name('video_question')->where('videodetail_id',$row->id)->column('questiondetail_id');
+        //var_dump($data);
+        $row['questionids']  = implode(',',$data);
+        $questions = Question::all();
+        $this->assign('questions', $questions);
+        //var_dump($data);
+        $row['single'] = 0;
+        $row['multi'] = 0;
+        $tmpdata = QuestionDetail::all($data);
+        foreach($tmpdata as $item){
+            if($item->typedata == '0'){
+                $row['single'] = $row['single'] + 1;
+            }
+            else{
+                $row['multi'] =   $row['multi'] + 1;
+            }
+        }
+        if (!$row) {
+            $this->error(__('No Results were found'));
+        }
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            if (!in_array($row[$this->dataLimitField], $adminIds)) {
+                $this->error(__('You have no permission'));
+            }
+        }
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                $params = $this->preExcludeFields($params);
+                $result = false;
+                Db::startTrans();
+                try {
+                    //是否采用模型验证
+                    if ($this->modelValidate) {
+                        $name = str_replace("\\model\\", "\\validate\\", get_class($this->model));
+                        $validate = is_bool($this->modelValidate) ? ($this->modelSceneValidate ? $name . '.edit' : $name) : $this->modelValidate;
+                        $row->validateFailException(true)->validate($validate);
+                    }
+                    $result = $row->allowField(true)->save($params);
+                    //$id = $this->model->getLastInsID();
+                    //dump($ids);
+                    Db::name('video_question')->where('videodetail_id',$ids)->delete();
+                    $questionids = explode(",",   $params['questionids']);
+                    foreach($questionids as $item){
+                        //dump($item);
+                        Db::name('video_question')->insert(['videodetail_id' => $ids,'questiondetail_id' => $item]);
+                    }
+                    Db::commit();
+                } catch (ValidateException $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                } catch (PDOException $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                } catch (Exception $e) {
+                    Db::rollback();
+                    $this->error($e->getMessage());
+                }
+                if ($result !== false) {
+                    $this->success();
+                } else {
+                    $this->error(__('No rows were updated'));
+                }
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
+    /**
+     * 详情
+     */
+    public function detail($ids)
+    {
+        $row = $this->model->get(['id' => $ids]);
+        $single=Db::name('question_detail')
+            ->field('qd.*')
+            ->alias('qd')
+            ->join('video_question vq','vq.questiondetail_id = qd.id')
+            ->where('vq.videodetail_id',$row->id)
+            ->where('qd.typedata','0')
+            ->select();
+        //dump($single);
+        $multi=Db::name('question_detail')
+            ->field('qd.*')
+            ->alias('qd')
+            ->join('video_question vq','vq.questiondetail_id = qd.id')
+            ->where('vq.videodetail_id',$row->id)
+            ->where('qd.typedata','1')
+            ->select();
+        //dump($multi);
+        if (!$row)
+            $this->error(__('No Results were found'));
+        $this->view->assign("row", $row->toArray());
+        $this->view->assign("single", $single);
+        $this->view->assign("multi", $multi);
+        return $this->view->fetch();
     }
 }
