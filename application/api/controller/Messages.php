@@ -88,6 +88,7 @@ class Messages extends Api
             $message->msgtable_id = $value['id'];
             $message->msgtable_type = 'Driver';
             $message->typedata = '1';
+            $message->objectdata = '1';
             $result = $message->allowField(true)->save();
         }
         if($result){
