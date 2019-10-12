@@ -27,6 +27,7 @@ class User extends Api
      *
      * @param string $account  账号
      * @param string $password 密码
+     * @param string $code 验证码
      * @ApiReturn ({
         "code": 1,
         "msg": "登录成功",
@@ -46,6 +47,11 @@ class User extends Api
     {
         $account = $this->request->request('account');
         $password = $this->request->request('password');
+        $code = $this->request->request('code');
+        $captcha = new \think\captcha\Captcha();
+        if(!$captcha->check($code)){
+            return $this->error('验证码错误');
+        }
         if (!$account || !$password) {
             $this->error(__('Invalid parameters'));
         }

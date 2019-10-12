@@ -17,8 +17,18 @@ use app\admin\model\notice\Notice;
  */
 class Common extends Api
 {
-    protected $noNeedLogin = ['upload'];
+    protected $noNeedLogin = ['upload','getCode'];
     protected $noNeedRight = '*';
+
+    /**
+     * 获取图形二维码
+     * @ApiMethod (Get)
+     * @ApiReturn   ( http://域名/index.php?s=/captcha&r=0.40130743496446786)
+     */
+
+    public function getCode(){
+
+    }
 
     /**
      * 上传文件
