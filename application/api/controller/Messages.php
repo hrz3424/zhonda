@@ -11,7 +11,7 @@ use app\admin\model\Message;
  */
 class Messages extends Api
 {
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
 
     /**

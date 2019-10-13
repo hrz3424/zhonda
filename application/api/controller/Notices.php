@@ -11,7 +11,7 @@ use app\admin\model\notice\Notice;
  */
 class Notices extends Api
 {
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
 
     /**

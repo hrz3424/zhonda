@@ -10,7 +10,7 @@ use think\Db;
  */
 class CompanyPlan extends Api
 {
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
 
 
