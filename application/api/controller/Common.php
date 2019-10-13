@@ -11,6 +11,8 @@ use app\admin\model\article\Article;
 use app\admin\model\article\ArticleDetail;
 use app\admin\model\examination\Examination;
 use app\admin\model\notice\Notice;
+use app\admin\model\Company;
+use app\admin\model\User;
 
 /**
  * 公共接口
@@ -28,6 +30,70 @@ class Common extends Api
 
     public function getCode(){
 
+    }
+
+    /**
+     * 公司中心
+     * @ApiMethod   (GET)
+     * @ApiRoute    (api/common/company/)
+     * @ApiParams   (name="company_id", type="string", required=true, description="公司ID")
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="code", type="integer", required=true, sample="0")
+     * @ApiReturn   ({
+    "code": 1,
+    "msg": "",
+    "time": "1570935587",
+    "data": {
+    "id": 4,
+    "name": "阿里巴巴",
+    "logo": "/uploads/20190927/6d88f0620a49c79f5d8e5dba134373e3.jpeg",
+    "address": "瑶海公园",
+    "license": "/uploads/20190927/6d88f0620a49c79f5d8e5dba134373e3.jpeg",
+    "contact": "张三",
+    "phone": "13295672345",
+    "district": "安徽省/合肥市/瑶海区",
+    "user": {
+    "id": 5,
+    "group_id": 0,
+    "username": "",
+    "nickname": "",
+    "password": "de96469cb885e2e1a9ada8a4c9fad79b",
+    "salt": "9iexcA",
+    "email": "893191249@qq.com",
+    "mobile": "",
+    "avatar": "",
+    "level": 0,
+    "gender": 0,
+    "birthday": null,
+    "bio": "",
+    "money": "0.00",
+    "score": 0,
+    "successions": 1,
+    "maxsuccessions": 1,
+    "prevtime": 1570880382,
+    "logintime": 1570880412,
+    "loginip": "127.0.0.1",
+    "loginfailure": 0,
+    "joinip": "",
+    "jointime": null,
+    "createtime": null,
+    "updatetime": 1570880412,
+    "token": "",
+    "status": "normal",
+    "verification": "",
+    "company_id": 4,
+    "prevtime_text": "2019-10-12 19:39:42",
+    "logintime_text": "2019-10-12 19:40:12",
+    "jointime_text": null
+    }
+    }
+    })
+     * */
+    public function  company($company_id = null){
+        $company = Company::get($company_id);
+        $user = $company->user;
+        $this->success('', $company);
     }
 
     /**
