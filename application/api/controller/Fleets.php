@@ -11,7 +11,7 @@ use think\Db;
  */
 class Fleets extends Api
 {
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
 
 
@@ -126,7 +126,7 @@ class Fleets extends Api
     {
         $drivers = Db::name('driver')->where('id','in',$this->request->param('driver_ids'))->select();
         $fleet = new Fleet($_POST);
-        $fleet->num = $drivers->count();
+        $fleet->num = count($drivers);
         $result = $fleet->allowField(true)->save();
         $fleet_id = $fleet->id;
         if($result){
@@ -161,7 +161,7 @@ class Fleets extends Api
     {
         $fleet = new Fleet();
         $drivers = Db::name('driver')->where('id','in',$this->request->param('driver_ids'))->select();
-        $fleet->num = $drivers->count();
+        $fleet->num = count($drivers);
         $result = $fleet->allowField(true)->save($_POST,['id' => $id]);
         if($result){
             Db::table('fleet_driver')->where('fleet_id',$id)->delete();

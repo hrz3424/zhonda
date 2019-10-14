@@ -10,7 +10,7 @@ use think\Db;
  */
 class Drivers extends Api
 {
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
 
     /**
@@ -67,11 +67,11 @@ class Drivers extends Api
             $data = Db::name('driver')
                 ->where('fleet_id',$fleet_id)
                 ->where('name LIKE "%'.$q.'%" or phone LIKE "%'.$q.'%" or carnum LIKE "%'.$q.'%" or nvq LIKE "%'.$q.'%"')
-                ->paginate(20,$page);
+                ->paginate(1,$page);
         }else{
             $data = Db::name('driver')
                 ->where('name LIKE "%'.$q.'%" or phone LIKE "%'.$q.'%" or carnum LIKE "%'.$q.'%" or nvq LIKE "%'.$q.'%"')
-                ->paginate(20,$page);
+                ->paginate(1,$page);
         }
 
         $this->success('', $data);
