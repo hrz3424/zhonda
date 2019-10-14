@@ -10,7 +10,7 @@ use think\Db;
  */
 class Drivers extends Api
 {
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
 
     /**

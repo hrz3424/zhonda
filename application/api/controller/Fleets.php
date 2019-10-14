@@ -11,7 +11,7 @@ use think\Db;
  */
 class Fleets extends Api
 {
-    protected $noNeedLogin = ['*'];
+    protected $noNeedLogin = [];
     protected $noNeedRight = ['*'];
 
 
